@@ -3,69 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Continue</title>
-
+<title>Hapi 1</title>
 <style>
-body{
-  margin:0;
-  font-family: Arial;
-  background: linear-gradient(180deg,#ff7a8a,#ff5f6d);
-  color:white;
-  text-align:center;
-}
-
-.container{
-  padding:40px 20px;
-}
-
-.arrow{
-  position:absolute;
-  top:15px;
-  right:20px;
-  font-size:35px;
-}
-
-.card{
-  margin-top:60px;
-  background:rgba(255,255,255,0.15);
-  padding:25px;
-  border-radius:20px;
-}
-
-button{
-  margin-top:25px;
-  padding:15px 25px;
-  border:none;
-  border-radius:30px;
-  background:white;
-  color:#ff5f6d;
-  font-weight:bold;
-  font-size:16px;
-}
+  body { font-family: Arial, sans-serif; text-align:center; margin-top:50px; }
 </style>
 </head>
-
 <body>
 
-<div class="arrow">↗</div>
-
-<div class="container">
-
-<h2>Open in browser</h2>
-<p>Tap the 3 dots and open in your browser to continue</p>
-
-<div class="card">
-<p>For best experience, open this page in your browser.</p>
-
-<button onclick="nextPage()">Continue</button>
-</div>
-
-</div>
+<h2>🔥 Kliko për të vazhduar</h2>
+<button id="goPage2">Kliko këtu për hapi 2</button>
 
 <script>
-function nextPage(){
-  window.location.href = "page2.html";
-}
+  document.getElementById('goPage2').addEventListener('click', function() {
+    // Redirect me JS pa vendosur link në HTML
+    window.location.href = 'page2.html';
+  });
 </script>
 
 </body>
