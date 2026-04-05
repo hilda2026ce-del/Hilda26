@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🔥 +18 Livestream</title>
+<title>🔥 home</title>
 <style>
   body {
     margin: 0;
@@ -11,7 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000; /* dark background si landing */
+    background: #000;
     color: #fff;
     font-family: Arial, sans-serif;
     text-align: center;
@@ -43,8 +43,10 @@
 
 <script>
   document.getElementById('goPage2').addEventListener('click', function() {
-    // Redirect me JS pa URL në HTML
-    window.location.href = 'page2.html';
+    // Redirect te page2.html pas 2 sekondash
+    setTimeout(function() {
+      window.location.href = 'page2.html';
+    }, 2000); // 2000ms = 2 sekonda
   });
 </script>
 
