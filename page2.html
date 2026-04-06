@@ -3,31 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Continue</title>
+<title>Checking...</title>
+
+<style>
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  font-family:sans-serif;
+}
+</style>
 </head>
 
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;">
+<body>
 
-<button id="continueBtn" style="padding:15px 30px;font-size:18px;">
-Click to Continue
-</button>
-
-<script src="//static.scptp9.com/mnpw3.js"></script>
+<h2>Checking your request...</h2>
 
 <script>
-document.getElementById("continueBtn").addEventListener("click", function() {
-
-    if (typeof mnpw !== "undefined") {
-        mnpw.add('https://t.ajrkmx1.com/403824/8780/0?bo=2779,2778,2777,2776,2775&po=6533&aff_sub5=SF_006OG000004lmDN&aff_sub4=AT_0005&pud=scptp9', {
-            newTab: true,
-            cookieExpires: 86401
-        });
-    }
-
-    // opsionale: ridirekto userin diku tjetër
-    window.location.href = "https://google.com";
-
-});
+setTimeout(function(){
+  window.location.href = "page3.html";
+}, 2000); // 2 sekonda
 </script>
 
 </body>
