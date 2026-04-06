@@ -3,33 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verify Age</title>
+<title>Trending</title>
 
 <style>
 body{
-  font-family: Arial;
+  margin:0;
+  background:black;
+  font-family:Arial;
+  color:white;
+}
+
+.video{
+  height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
-  background:#f2f3f7;
+  flex-direction:column;
 }
-button{
-  padding:15px 30px;
-  font-size:18px;
+
+.fake-video{
+  width:90%;
+  max-width:400px;
+  height:70%;
+  background:#111;
+  border-radius:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+}
+
+.btn{
+  margin-top:20px;
+  padding:12px 25px;
+  background:white;
+  color:black;
+  border-radius:5px;
+  text-decoration:none;
 }
 </style>
 </head>
 
 <body>
 
-<button onclick="goNext()">I am 18+ Continue</button>
+<div class="video">
+  <div class="fake-video">
+    ▶️ Tap to watch video
+  </div>
 
-<script>
-function goNext(){
-  window.location.href = "page2.html";
-}
-</script>
+  <a href="page2.html" class="btn">Watch Now</a>
+</div>
 
 </body>
 </html>
