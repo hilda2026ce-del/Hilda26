@@ -3,28 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checking...</title>
+<title>Video</title>
 
 <style>
 body{
+  margin:0;
+  font-family:Arial;
+  background:black;
+  color:white;
+}
+
+.container{
+  padding:20px;
+}
+
+.video-box{
+  height:300px;
+  background:#111;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
-  font-family:sans-serif;
+  border-radius:10px;
+}
+
+.comment{
+  margin-top:10px;
+  font-size:14px;
+  opacity:0.8;
+}
+
+a{
+  display:block;
+  margin-top:20px;
+  padding:15px;
+  text-align:center;
+  background:white;
+  color:black;
+  text-decoration:none;
+  border-radius:5px;
 }
 </style>
 </head>
 
 <body>
 
-<h2>Checking your request...</h2>
+<div class="container">
 
-<script>
-setTimeout(function(){
-  window.location.href = "page3.html";
-}, 2000); // 2 sekonda
-</script>
+<div class="video-box">
+▶️ Video Preview
+</div>
+
+<p>🔥 23,482 views • 1,203 likes</p>
+
+<div class="comment">user123: crazy video 😳</div>
+<div class="comment">alex: no way this is real</div>
+<div class="comment">mike: I watched full lol</div>
+
+<a href="page3.html">Watch Full Video</a>
+
+</div>
 
 </body>
 </html>
