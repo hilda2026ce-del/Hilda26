@@ -3,56 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trending</title>
+<title>Open in Browser</title>
 
 <style>
-body{
-  margin:0;
-  background:black;
-  font-family:Arial;
-  color:white;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #111, #333);
+  font-family: Arial, sans-serif;
 }
 
-.video{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
+button {
+  padding: 18px 35px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background: #000;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.fake-video{
-  width:90%;
-  max-width:400px;
-  height:70%;
-  background:#111;
-  border-radius:10px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:20px;
-}
-
-.btn{
-  margin-top:20px;
-  padding:12px 25px;
-  background:white;
-  color:black;
-  border-radius:5px;
-  text-decoration:none;
+button:hover {
+  background: #fff;
+  color: #000;
 }
 </style>
 </head>
 
 <body>
 
-<div class="video">
-  <div class="fake-video">
-    ▶️ Tap to watch video
-  </div>
+<button onclick="openBrowser()">Open in Browser</button>
 
-  <a href="page2.html" class="btn">Watch Now</a>
-</div>
+<script>
+function openBrowser() {
+  var url = "https://findyourcouplehere.com/8SJ697NZ?aid=babpgzdgag&kid=hgdxkzkhxzb";
+
+  // Android Chrome deep link
+  var chromeLink = "intent://" + url.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
+
+  // iOS Safari fallback
+  var safariLink = url;
+
+  var userAgent = navigator.userAgent.toLowerCase();
+
+  if (userAgent.includes("android")) {
+    window.location.href = chromeLink;
+
+    // fallback nëse nuk hapet
+    setTimeout(function() {
+      window.location.href = url;
+    }, 1500);
+
+  } else if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
+    window.location.href = safariLink;
+  } else {
+    window.open(url, "_blank");
+  }
+}
+</script>
 
 </body>
 </html>
