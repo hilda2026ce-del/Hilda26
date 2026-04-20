@@ -3,68 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open in Browser</title>
+<title>Open</title>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #111, #333);
-  font-family: Arial, sans-serif;
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#111;
+  font-family:Arial;
 }
 
-button {
-  padding: 18px 35px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
-  background: #000;
-  border: 2px solid #fff;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #fff;
-  color: #000;
+button{
+  padding:20px 40px;
+  font-size:22px;
+  font-weight:bold;
+  border:none;
+  border-radius:15px;
+  background:#fff;
+  color:#000;
 }
 </style>
 </head>
 
 <body>
 
-<button onclick="openBrowser()">Open in Browser</button>
+<button onclick="go()">OPEN</button>
 
 <script>
-function openBrowser() {
+function go(){
   var url = "https://findyourcouplehere.com/8SJ697NZ?aid=babpgzdgag&kid=hgdxkzkhxzb";
 
-  // Android Chrome deep link
-  var chromeLink = "intent://" + url.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
+  // intent deep link (Android)
+  var intent = "intent://" + url.replace(/^https?:\/\//, "") +
+               "#Intent;scheme=https;action=android.intent.action.VIEW;end";
 
-  // iOS Safari fallback
-  var safariLink = url;
+  // provo intent
+  window.location.href = intent;
 
-  var userAgent = navigator.userAgent.toLowerCase();
-
-  if (userAgent.includes("android")) {
-    window.location.href = chromeLink;
-
-    // fallback nëse nuk hapet
-    setTimeout(function() {
-      window.location.href = url;
-    }, 1500);
-
-  } else if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
-    window.location.href = safariLink;
-  } else {
-    window.open(url, "_blank");
-  }
+  // fallback nëse nuk del chooser
+  setTimeout(function(){
+    window.location.href = url;
+  }, 1200);
 }
 </script>
 
