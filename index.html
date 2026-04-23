@@ -1,68 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open</title>
+  <meta charset="UTF-8">
+  <title>Faqja 1</title>
+  <style>
+    body {
+      margin: 0;
+      background: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
 
-<style>
-body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#000;
-  font-family:Arial;
-}
+    .container {
+      padding: 20px;
+    }
 
-button{
-  padding:20px 40px;
-  font-size:22px;
-  font-weight:bold;
-  border:none;
-  border-radius:15px;
-  background:#fff;
-  color:#000;
-}
-</style>
+    img {
+      max-width: 100%;
+    }
+
+    .main-img {
+      width: 300px;
+      margin-bottom: 15px;
+    }
+
+    .banner img {
+      width: 300px;
+      height: auto;
+    }
+
+    .buttons {
+      margin: 20px 0;
+    }
+
+    .btn {
+      display: block;
+      width: 220px;
+      margin: 10px auto;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #007bff; /* blu */
+      color: white;
+      transition: 0.2s;
+    }
+
+    .btn:active {
+      background: #28a745; /* jeshile kur shtypet */
+    }
+
+    .slider img {
+      width: 300px;
+      display: none;
+      margin-top: 15px;
+    }
+
+    .slider img.active {
+      display: block;
+    }
+  </style>
 </head>
-
 <body>
 
-<button onclick="go()">OPEN</button>
+<div class="container">
+
+  <!-- 1. Foto kryesore -->
+  <img src="https://i.imgur.com/mVPRhRJ.jpeg" class="main-img">
+
+  <!-- 2. Banner -->
+  <div class="banner">
+    <a href="https://t.ajrkmx1.com/403824/8865/0?bo=2779,2778,2777,2776,2775&file_id=606055&po=6533&aff_sub5=SF_006OG000004lmDN&aff_sub4=AT_0002" target="_blank">
+      <img src="https://www.imglnkx.com/8865/DESIGN-19806_Neon_300100_6.gif">
+    </a>
+  </div>
+
+  <!-- 3. Dy butona -->
+  <div class="buttons">
+    <button class="btn" onclick="goPage2()">PO</button>
+    <button class="btn" onclick="goPage2()">JO</button>
+  </div>
+
+  <!-- 4. Slider -->
+  <div class="slider">
+    <img src="https://i.imgur.com/tjC5eLP.jpeg" class="active">
+    <img src="https://i.imgur.com/IuYWULv.jpeg">
+    <img src="https://i.imgur.com/C5zxsQF.jpeg">
+  </div>
+
+</div>
 
 <script>
-function go(){
-  var url = "https://findyourcouplehere.com/8SJ697NZ?aid=babpgzdgag&kid=hgdxkzkhxzb";
-
-  var ua = navigator.userAgent.toLowerCase();
-
-  // ANDROID
-  if (ua.includes("android")) {
-
-    // 1. intent (mund të hap chooser ose chrome)
-    var intent = "intent://" + url.replace(/^https?:\/\//, "") +
-      "#Intent;scheme=https;package=com.android.chrome;end";
-
-    window.location.href = intent;
-
-    // 2. fallback chrome scheme
-    setTimeout(function(){
-      window.location.href = "googlechrome://" + url.replace(/^https?:\/\//, "");
-    }, 800);
-
-    // 3. fallback normal
-    setTimeout(function(){
-      window.location.href = url;
-    }, 1600);
-
-  } else {
-
-    // iPhone / tjera
-    window.location.href = url;
+  function goPage2() {
+    window.location.href = "page2.html";
   }
-}
+
+  let index = 0;
+  const images = document.querySelectorAll(".slider img");
+
+  setInterval(() => {
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+  }, 3000);
 </script>
 
 </body>
