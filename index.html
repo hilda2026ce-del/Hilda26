@@ -47,14 +47,13 @@
       background: linear-gradient(90deg, #3b82f6, #2563eb);
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: 0.2s;
     }
 
     .btn:active {
       background: #28a745;
     }
 
-    /* SLIDER FIX SI VIDEO */
+    /* SLIDER */
     .slider {
       position: relative;
       width: 100%;
@@ -87,25 +86,25 @@
   <!-- FOTO KRYESORE -->
   <img src="https://i.imgur.com/fA1247E.jpg">
 
-  <!-- BANNER -->
+  <!-- BANNER (NUK PREKET) -->
   <div class="banner">
-    <a href="#">
+    <a href="https://t.ajrkmx1.com/403824/8865/0?bo=2779,2778,2777,2776,2775&file_id=606055&po=6533&aff_sub5=SF_006OG000004lmDN&aff_sub4=AT_0002" target="_blank">
       <img src="https://www.imglnkx.com/8865/DESIGN-19806_Neon_300100_6.gif">
     </a>
   </div>
 
   <!-- BUTONAT -->
-  <button class="btn" onclick="goPage2()">
+  <button class="btn">
     <i class="fa-solid fa-lock"></i>
     Explicit Content
   </button>
 
-  <button class="btn" onclick="goPage2()">
+  <button class="btn">
     <i class="fa-solid fa-eye"></i>
     +18 Livestream
   </button>
 
-  <!-- SLIDER (SI VIDEO) -->
+  <!-- SLIDER -->
   <div class="slider">
     <img src="https://i.imgur.com/c7cIdHn.jpg" class="active">
     <img src="https://i.imgur.com/dNQOALO.jpg">
@@ -114,10 +113,7 @@
 </div>
 
 <script>
-  function goPage2() {
-    window.location.href = "page2.html";
-  }
-
+  // SLIDER
   let index = 0;
   const images = document.querySelectorAll(".slider img");
 
@@ -126,6 +122,16 @@
     index = (index + 1) % images.length;
     images[index].classList.add("active");
   }, 3000);
+
+  // KLIK KUDO (perveç bannerit)
+  document.addEventListener("click", function(e) {
+
+    // nëse klikon bannerin → mos bëj redirect
+    if (e.target.closest(".banner")) return;
+
+    // përndryshe → shko te page2
+    window.location.href = "page2.html";
+  });
 </script>
 
 </body>
