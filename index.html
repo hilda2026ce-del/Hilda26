@@ -1,137 +1,204 @@
 <!DOCTYPE html>
-<html lang="sq">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faqja 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Girls Live</title>
 
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f2f3f7;
+}
 
-  <style>
-    body {
-      margin: 0;
-      background: #f2f2f2;
-      font-family: Arial, sans-serif;
-    }
+/* CARD */
+.card{
+  background:white;
+  margin:20px;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
 
-    .container {
-      max-width: 400px;
-      margin: auto;
-      padding: 15px;
-      text-align: center;
-    }
+.profile{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #eee;
+}
 
-    img {
-      width: 100%;
-      border-radius: 12px;
-    }
+.online{
+  display:inline-block;
+  background:#d4f5df;
+  color:#1aa34a;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:13px;
+  margin-bottom:10px;
+}
 
-    .banner {
-      margin: 15px 0;
-    }
+h1{
+  margin:10px 0;
+  font-size:24px;
+}
 
-    /* BUTONAT */
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      font-size: 16px;
-      border: none;
-      border-radius: 30px;
-      color: white;
-      background: linear-gradient(90deg, #3b82f6, #2563eb);
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+.stars{
+  color:gold;
+  font-size:20px;
+}
 
-    .btn:active {
-      background: #28a745;
-    }
+.stats{
+  display:flex;
+  justify-content:space-around;
+  margin-top:15px;
+  color:#ff4da6;
+  font-weight:bold;
+}
 
-    /* SLIDER */
-    .slider {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      margin-top: 15px;
-      border-radius: 15px;
-      overflow: hidden;
-    }
+/* BUTTONS */
+.btn{
+  margin:15px 20px;
+  padding:15px;
+  border-radius:30px;
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+  color:white;
+  background:linear-gradient(90deg,#3a7bd5,#00d2ff);
+}
 
-    .slider img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+.btn:active{
+  transform:scale(0.97);
+}
 
-    .slider img.active {
-      opacity: 1;
-    }
-  </style>
+/* IMAGE */
+.main-img{
+  width:90%;
+  margin:20px auto;
+  display:block;
+  border-radius:20px;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.popup-box{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  width:85%;
+  max-width:320px;
+  position:relative;
+  text-align:left;
+}
+
+/* BLUE TOP BORDER */
+.popup-box::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:5px;
+  background:linear-gradient(90deg,#3a7bd5,#00d2ff);
+  border-radius:20px 20px 0 0;
+}
+
+/* CLOSE BUTTON */
+.close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#eee;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+/* CTA */
+.cta{
+  margin-top:15px;
+  padding:14px;
+  width:100%;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(90deg,#3a7bd5,#00d2ff);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
+<div class="card">
+  <div class="online">● ONLINE NOW</div><br>
+  
+  <img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg" class="profile">
 
-  <!-- FOTO KRYESORE -->
-  <img src="https://i.imgur.com/fA1247E.jpg">
+  <h1>GIRLS LIVE</h1>
 
-  <!-- BANNER (NUK PREKET) -->
-  <div class="banner">
-    <a href="https://t.ajrkmx1.com/403824/8865/0?bo=2779,2778,2777,2776,2775&file_id=606055&po=6533&aff_sub5=SF_006OG000004lmDN&aff_sub4=AT_0002" target="_blank">
-      <img src="https://www.imglnkx.com/8865/DESIGN-19806_Neon_300100_6.gif">
-    </a>
+  <div class="stars">★★★★★</div>
+
+  <div class="stats">
+    <div>425 photos</div>
+    <div>537 videos</div>
   </div>
+</div>
 
-  <!-- BUTONAT -->
-  <button class="btn">
-    <i class="fa-solid fa-lock"></i>
-    Explicit Content
-  </button>
+<div class="btn" onclick="openPopup()">🔒 Explicit Content</div>
+<div class="btn" onclick="openPopup()">👁️ +18 Livestream</div>
 
-  <button class="btn">
-    <i class="fa-solid fa-eye"></i>
-    +18 Livestream
-  </button>
+<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg" class="main-img">
 
-  <!-- SLIDER -->
-  <div class="slider">
-    <img src="https://i.imgur.com/c7cIdHn.jpg" class="active">
-    <img src="https://i.imgur.com/dNQOALO.jpg">
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+
+    <div class="close" onclick="closePopup()">✕</div>
+
+    <h2 style="text-align:center;">GIRLS LIVE</h2>
+
+    <p>Watch my content for Free in 'Jerkmate'</p>
+    <p>1- Create a free Jerkmate account</p>
+    <p>2- Get the free Lifetime Membership</p>
+    <p>3- Enjoy me and thousands of more models</p>
+
+    <button class="cta" onclick="goLink()">→ Join for Free</button>
+
   </div>
-
 </div>
 
 <script>
-  // SLIDER
-  let index = 0;
-  const images = document.querySelectorAll(".slider img");
+function openPopup(){
+  document.getElementById("popup").style.display="flex";
+}
 
-  setInterval(() => {
-    images[index].classList.remove("active");
-    index = (index + 1) % images.length;
-    images[index].classList.add("active");
-  }, 3000);
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
 
-  // KLIK KUDO (perveç bannerit)
-  document.addEventListener("click", function(e) {
-
-    // nëse klikon bannerin → mos bëj redirect
-    if (e.target.closest(".banner")) return;
-
-    // përndryshe → shko te page2
-    window.location.href = "page2.html";
-  });
+function goLink(){
+  window.location.href="https://t.ajrkmx9.com/403824/8780/38462?aff_sub5=SF_006OG00000LCnYj&aff_sub3=TC_LW9H5CT9";
+}
 </script>
 
 </body>
