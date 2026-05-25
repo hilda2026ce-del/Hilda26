@@ -1,137 +1,339 @@
 <!DOCTYPE html>
-<html lang="sq">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faqja 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Girls Live</title>
 
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      background: #f2f2f2;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    .container {
-      max-width: 400px;
-      margin: auto;
-      padding: 15px;
-      text-align: center;
-    }
+body{
+font-family:Arial,sans-serif;
+background:#000;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
 
-    img {
-      width: 100%;
-      border-radius: 12px;
-    }
+.bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url('https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg') center/cover no-repeat;
+filter:blur(8px);
+transform:scale(1.1);
+z-index:-2;
+}
 
-    .banner {
-      margin: 15px 0;
-    }
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+z-index:-1;
+}
 
-    /* BUTONAT */
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      font-size: 16px;
-      border: none;
-      border-radius: 30px;
-      color: white;
-      background: linear-gradient(90deg, #3b82f6, #2563eb);
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+.card{
+width:92%;
+max-width:420px;
+background:#fff;
+border-radius:28px;
+overflow:hidden;
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+animation:popup .5s ease;
+position:relative;
+}
 
-    .btn:active {
-      background: #28a745;
-    }
+@keyframes popup{
+from{
+transform:scale(.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
 
-    /* SLIDER */
-    .slider {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      margin-top: 15px;
-      border-radius: 15px;
-      overflow: hidden;
-    }
+.top{
+background:linear-gradient(90deg,#ff006a,#7b2cff);
+padding:24px;
+text-align:center;
+position:relative;
+}
 
-    .slider img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+.top h1{
+color:#fff;
+font-size:30px;
+font-weight:800;
+letter-spacing:1px;
+}
 
-    .slider img.active {
-      opacity: 1;
-    }
-  </style>
+.close{
+position:absolute;
+right:18px;
+top:14px;
+width:52px;
+height:52px;
+border:4px solid #fff;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-size:30px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.image{
+position:relative;
+height:330px;
+overflow:hidden;
+}
+
+.image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.fade{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+height:130px;
+background:linear-gradient(to top,#fff,transparent);
+}
+
+.content{
+padding:35px 28px;
+text-align:center;
+}
+
+.content h2{
+font-size:28px;
+margin-bottom:28px;
+font-weight:900;
+color:#000;
+}
+
+.steps{
+text-align:left;
+margin-bottom:30px;
+}
+
+.step{
+display:flex;
+margin-bottom:22px;
+font-size:18px;
+font-weight:700;
+color:#555;
+line-height:1.4;
+}
+
+.number{
+color:#ff0055;
+font-size:22px;
+font-weight:900;
+margin-right:18px;
+min-width:40px;
+}
+
+.join-btn{
+width:100%;
+border:none;
+padding:24px;
+border-radius:60px;
+background:#00d65c;
+color:#fff;
+font-size:26px;
+font-weight:900;
+cursor:pointer;
+box-shadow:0 0 25px rgba(0,214,92,.5);
+transition:.2s;
+animation:pulse 1.5s infinite;
+}
+
+.join-btn:hover{
+transform:scale(1.03);
+}
+
+@keyframes pulse{
+0%{
+box-shadow:0 0 0 0 rgba(0,214,92,.7);
+}
+70%{
+box-shadow:0 0 0 20px rgba(0,214,92,0);
+}
+100%{
+box-shadow:0 0 0 0 rgba(0,214,92,0);
+}
+}
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+padding:20px;
+}
+
+.popup-box{
+background:#111;
+width:100%;
+max-width:360px;
+border-radius:24px;
+padding:30px;
+text-align:center;
+animation:popup .3s ease;
+}
+
+.popup-box h3{
+color:#fff;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.popup-box p{
+color:#bbb;
+font-size:18px;
+margin-bottom:30px;
+line-height:1.5;
+}
+
+.popup-btn{
+display:block;
+width:100%;
+padding:18px;
+border-radius:50px;
+background:#00d65c;
+color:#fff;
+text-decoration:none;
+font-size:24px;
+font-weight:900;
+}
+
+.live{
+position:absolute;
+top:15px;
+left:15px;
+background:red;
+color:#fff;
+padding:8px 16px;
+border-radius:30px;
+font-weight:800;
+font-size:14px;
+animation:livepulse 1s infinite;
+}
+
+@keyframes livepulse{
+0%{
+opacity:1;
+}
+50%{
+opacity:.4;
+}
+100%{
+opacity:1;
+}
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
+<div class="bg"></div>
+<div class="overlay"></div>
 
-  <!-- FOTO KRYESORE -->
-  <img src="https://i.imgur.com/fA1247E.jpg">
+<div class="card">
 
-  <!-- BANNER (NUK PREKET) -->
-  <div class="banner">
-    <a href="https://t.ajrkmx1.com/403824/8865/0?bo=2779,2778,2777,2776,2775&file_id=606055&po=6533&aff_sub5=SF_006OG000004lmDN&aff_sub4=AT_0002" target="_blank">
-      <img src="https://www.imglnkx.com/8865/DESIGN-19806_Neon_300100_6.gif">
-    </a>
-  </div>
+<div class="top">
+<h1>GIRLS LIVE</h1>
+<div class="close">×</div>
+</div>
 
-  <!-- BUTONAT -->
-  <button class="btn">
-    <i class="fa-solid fa-lock"></i>
-    Explicit Content
-  </button>
+<div class="image">
+<div class="live">● LIVE NOW</div>
 
-  <button class="btn">
-    <i class="fa-solid fa-eye"></i>
-    +18 Livestream
-  </button>
+<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg">
 
-  <!-- SLIDER -->
-  <div class="slider">
-    <img src="https://i.imgur.com/c7cIdHn.jpg" class="active">
-    <img src="https://i.imgur.com/dNQOALO.jpg">
-  </div>
+<div class="fade"></div>
+</div>
+
+<div class="content">
+
+<h2>Watch my content for Free</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="number">1 -</div>
+<div>Create a free account</div>
+</div>
+
+<div class="step">
+<div class="number">2 -</div>
+<div>Get the free Lifetime Membership</div>
+</div>
+
+<div class="step">
+<div class="number">3 -</div>
+<div>Enjoy me and thousands of more models</div>
+</div>
+
+</div>
+
+<button class="join-btn" onclick="openPopup()">
+→ JOIN FOR FREE
+</button>
+
+</div>
+</div>
+
+<div class="popup" id="popup">
+
+<div class="popup-box">
+
+<h3>Girls Live 🔥</h3>
+
+<p>
+You must create a free account to continue watching the live stream.
+</p>
+
+<a class="popup-btn"
+href="https://a.vlmjm1.com/848772a1-0185-45ff-9e26-51fca699e698?aff_sub3=TC_LW9H5CT9&aff_id=403824&aff_sub5=SF_006OG00000LCnYj">
+CONTINUE
+</a>
+
+</div>
 
 </div>
 
 <script>
-  // SLIDER
-  let index = 0;
-  const images = document.querySelectorAll(".slider img");
-
-  setInterval(() => {
-    images[index].classList.remove("active");
-    index = (index + 1) % images.length;
-    images[index].classList.add("active");
-  }, 3000);
-
-  // KLIK KUDO (perveç bannerit)
-  document.addEventListener("click", function(e) {
-
-    // nëse klikon bannerin → mos bëj redirect
-    if (e.target.closest(".banner")) return;
-
-    // përndryshe → shko te page2
-    window.location.href = "page2.html";
-  });
+function openPopup(){
+document.getElementById("popup").style.display="flex";
+}
 </script>
 
 </body>
