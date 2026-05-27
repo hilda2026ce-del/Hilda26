@@ -20,6 +20,7 @@ font-family:Arial,sans-serif;
 background:#0a0013;
 overflow:hidden;
 color:#fff;
+cursor:pointer;
 }
 
 /* BACKGROUND */
@@ -205,25 +206,37 @@ transform:translate(-50%,-50%);
 width:120px;
 height:120px;
 border-radius:50%;
-background:#ff1d8e;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(10px);
+border:2px solid rgba(255,255,255,.35);
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:55px;
 cursor:pointer;
-box-shadow:0 0 40px rgba(255,0,120,.65);
-animation:pulse 1.5s infinite;
+box-shadow:0 0 40px rgba(0,0,0,.45);
+animation:pulse 1.8s infinite;
+}
+
+.play::before{
+content:'';
+width:0;
+height:0;
+border-top:18px solid transparent;
+border-bottom:18px solid transparent;
+border-left:30px solid #fff;
+margin-left:8px;
+filter:drop-shadow(0 0 10px rgba(255,255,255,.4));
 }
 
 @keyframes pulse{
 0%{
-box-shadow:0 0 0 0 rgba(255,0,120,.7);
+transform:translate(-50%,-50%) scale(1);
 }
-70%{
-box-shadow:0 0 0 30px rgba(255,0,120,0);
+50%{
+transform:translate(-50%,-50%) scale(1.06);
 }
 100%{
-box-shadow:0 0 0 0 rgba(255,0,120,0);
+transform:translate(-50%,-50%) scale(1);
 }
 }
 
@@ -412,7 +425,7 @@ box-shadow:0 0 25px rgba(0,214,92,.45);
 </style>
 </head>
 
-<body>
+<body onclick="handlePageClick(event)">
 
 <div class="bg"></div>
 <div class="overlay"></div>
@@ -467,9 +480,7 @@ LIVE NOW
 
 <img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg">
 
-<div class="play" onclick="openPopup()">
-▶
-</div>
+<div class="play"></div>
 
 <div class="watchers">
 👁 WATCHING NOW:
@@ -478,11 +489,11 @@ LIVE NOW
 
 </div>
 
-<button class="live18-btn" onclick="openPopup()">
+<button class="live18-btn">
 🔞 +18 LIVESTREAM
 </button>
 
-<button class="join-btn" onclick="openPopup()">
+<button class="join-btn">
 JOIN FREE TO WATCH
 </button>
 
@@ -492,7 +503,7 @@ JOIN FREE TO WATCH
 
 <div class="popup" id="popup">
 
-<div class="popup-box">
+<div class="popup-box" onclick="event.stopPropagation()">
 
 <div class="popup-top">
 
@@ -554,6 +565,17 @@ document.getElementById("popup").style.display="flex";
 
 function closePopup(){
 document.getElementById("popup").style.display="none";
+}
+
+function handlePageClick(event){
+
+const popup = document.getElementById("popup");
+
+if(popup.style.display === "flex"){
+return;
+}
+
+openPopup();
 }
 
 setInterval(() => {
