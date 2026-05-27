@@ -246,14 +246,42 @@ position:absolute;
 bottom:22px;
 left:50%;
 transform:translateX(-50%);
-background:#000;
-padding:18px 28px;
-border-radius:40px;
-font-size:18px;
-font-weight:900;
+background:rgba(15,15,15,.92);
+padding:16px 24px;
+border-radius:18px;
+font-size:16px;
+font-weight:800;
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
+backdrop-filter:blur(8px);
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 8px 25px rgba(0,0,0,.45);
+}
+
+.watchers i{
+font-size:15px;
+color:#fff;
+opacity:.9;
+}
+
+.watching-text{
+color:#fff;
+letter-spacing:.5px;
+white-space:nowrap;
+}
+
+.watching-divider{
+width:1px;
+height:18px;
+background:rgba(255,255,255,.18);
+}
+
+#watching{
+color:#ff4da6;
+font-weight:900;
+min-width:42px;
+text-align:center;
 }
 
 /* +18 BUTTON */
@@ -485,7 +513,9 @@ LIVE NOW
 <div class="play"></div>
 
 <div class="watchers">
-👁 WATCHING NOW:
+<i class="fa-solid fa-eye"></i>
+<span class="watching-text">WATCHING NOW</span>
+<span class="watching-divider"></span>
 <span id="watching">1521</span>
 </div>
 
