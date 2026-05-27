@@ -1,12 +1,19 @@
 <!-- REPLACE THIS -->
 
+<h1>Sarah 💕 <span class="verify">✔</span></h1>
+
+<!-- WITH THIS -->
+
+<h1>Sarah 💕 <span class="verify"><i class="fa-solid fa-circle-check"></i></span></h1>
+
+
+<!-- REPLACE THIS -->
+
 <div class="live-tag">LIVE</div>
 
-<!-- WITH -->
+<!-- WITH THIS -->
 
-<div class="live-tag">
-<span class="dot"></span> LIVE
-</div>
+<div class="live-tag"><span class="dot"></span>LIVE</div>
 
 
 <!-- REPLACE THIS -->
@@ -15,25 +22,11 @@
 ● LIVE NOW
 </div>
 
-<!-- WITH -->
+<!-- WITH THIS -->
 
 <div class="live-now">
-<span class="dot"></span> LIVE NOW
+<span class="dot"></span>LIVE NOW
 </div>
-
-
-<!-- REPLACE THIS -->
-
-<h1>Sarah 💕 <span class="verify">✔</span></h1>
-
-<!-- WITH -->
-
-<h1>
-Sarah 💕
-<span class="verify">
-<i class="fa-solid fa-circle-check"></i>
-</span>
-</h1>
 
 
 <!-- REPLACE THIS -->
@@ -42,7 +35,7 @@ Sarah 💕
 👁 WATCHING NOW: 1,521
 </div>
 
-<!-- WITH -->
+<!-- WITH THIS -->
 
 <div class="watchers">
 👁 WATCHING NOW:
@@ -50,7 +43,11 @@ Sarah 💕
 </div>
 
 
-<!-- ADD THIS UNDER </div> OF video-box -->
+<!-- ADD THIS DIRECTLY UNDER -->
+
+</div> <!-- END OF video-box -->
+
+<!-- ADD -->
 
 <button class="live18-btn" onclick="openPopup()">
 🔞 +18 LIVESTREAM
@@ -60,12 +57,12 @@ Sarah 💕
 <!-- ADD THIS BEFORE </style> -->
 
 .dot{
-width:10px;
-height:10px;
+width:9px;
+height:9px;
 background:#fff;
 border-radius:50%;
 display:inline-block;
-margin-right:7px;
+margin-right:6px;
 animation:blink 1s infinite;
 }
 
@@ -73,6 +70,10 @@ animation:blink 1s infinite;
 0%{opacity:1;}
 50%{opacity:.3;}
 100%{opacity:1;}
+}
+
+.verify{
+color:#1da1ff;
 }
 
 .live18-btn{
@@ -86,18 +87,15 @@ color:#ff2f92;
 font-size:20px;
 font-weight:900;
 border:2px solid #ff2f92;
+cursor:pointer;
 }
 
 .video-box img{
 object-position:center top;
 }
 
-.verify{
-color:#1da1ff;
-}
 
-
-<!-- ADD THIS BEFORE </body> -->
+/* ADD THIS BEFORE </body> */
 
 <script>
 
@@ -109,7 +107,7 @@ document.getElementById("watching");
 let num =
 parseInt(el.innerText);
 
-num += Math.floor(Math.random()*6)-2;
+num += Math.floor(Math.random()*5)-2;
 
 el.innerText = num;
 
