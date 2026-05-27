@@ -1,19 +1,32 @@
-<!-- REPLACE ONLY THESE PARTS -->
+<!-- REPLACE THIS -->
 
-<!-- PROFILE -->
-<div class="profile-box">
+<div class="live-tag">LIVE</div>
 
-<div class="avatar">
-<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg">
+<!-- WITH -->
 
 <div class="live-tag">
-<span class="dot"></span>
-LIVE
+<span class="dot"></span> LIVE
 </div>
 
+
+<!-- REPLACE THIS -->
+
+<div class="live-now">
+● LIVE NOW
 </div>
 
-<div class="info">
+<!-- WITH -->
+
+<div class="live-now">
+<span class="dot"></span> LIVE NOW
+</div>
+
+
+<!-- REPLACE THIS -->
+
+<h1>Sarah 💕 <span class="verify">✔</span></h1>
+
+<!-- WITH -->
 
 <h1>
 Sarah 💕
@@ -22,75 +35,29 @@ Sarah 💕
 </span>
 </h1>
 
-<div class="rating">
-5.0 ★★★★★
-<span class="views">(4.9k)</span>
+
+<!-- REPLACE THIS -->
+
+<div class="watchers">
+👁 WATCHING NOW: 1,521
 </div>
 
-<div class="stats">
-<span id="videos">375</span> videos •
-<span id="photos">891</span> photos
-</div>
-
-</div>
-</div>
-
-<!-- VIDEO BOX -->
-<div class="video-box">
-
-<div class="live-now">
-<span class="dot"></span>
-LIVE NOW
-</div>
-
-<div class="timer" id="timer">
-🕒 04:54
-</div>
-
-<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg">
-
-<div class="play" onclick="openPopup()">
-▶
-</div>
+<!-- WITH -->
 
 <div class="watchers">
 👁 WATCHING NOW:
 <span id="watching">1521</span>
 </div>
 
-</div>
 
-<!-- NEW BUTTON -->
+<!-- ADD THIS UNDER </div> OF video-box -->
+
 <button class="live18-btn" onclick="openPopup()">
 🔞 +18 LIVESTREAM
 </button>
 
-<button class="join-btn" onclick="openPopup()">
-JOIN FREE TO WATCH
-</button>
 
-<style>
-
-/* PROFILE IMAGE FULL */
-
-.video-box img{
-width:100%;
-height:auto;
-max-height:640px;
-object-fit:cover;
-display:block;
-filter:brightness(.78);
-}
-
-/* VERIFIED */
-
-.verify{
-color:#1da1ff;
-font-size:24px;
-margin-left:5px;
-}
-
-/* LIVE ANIMATION */
+<!-- ADD THIS BEFORE </style> -->
 
 .dot{
 width:10px;
@@ -98,42 +65,18 @@ height:10px;
 background:#fff;
 border-radius:50%;
 display:inline-block;
-margin-right:8px;
+margin-right:7px;
 animation:blink 1s infinite;
 }
 
 @keyframes blink{
 0%{opacity:1;}
-50%{opacity:.2;}
+50%{opacity:.3;}
 100%{opacity:1;}
 }
 
-/* VIEWS */
-
-.views{
-animation:viewPulse 2s infinite;
-display:inline-block;
-}
-
-@keyframes viewPulse{
-0%{
-transform:scale(1);
-opacity:1;
-}
-50%{
-transform:scale(1.08);
-opacity:.8;
-}
-100%{
-transform:scale(1);
-opacity:1;
-}
-}
-
-/* +18 BUTTON */
-
 .live18-btn{
-margin-top:22px;
+margin-top:18px;
 width:100%;
 padding:18px;
 border:none;
@@ -142,97 +85,34 @@ background:#111;
 color:#ff2f92;
 font-size:20px;
 font-weight:900;
-cursor:pointer;
 border:2px solid #ff2f92;
-box-shadow:0 0 20px rgba(255,0,140,.3);
-transition:.2s;
 }
 
-.live18-btn:hover{
-transform:scale(1.02);
+.video-box img{
+object-position:center top;
 }
 
-/* WATCHERS */
-
-.watchers{
-position:absolute;
-bottom:22px;
-left:50%;
-transform:translateX(-50%);
-background:#000;
-padding:18px 28px;
-border-radius:40px;
-font-size:18px;
-font-weight:900;
-display:flex;
-align-items:center;
-gap:10px;
-white-space:nowrap;
-animation:floaty 2s infinite ease-in-out;
+.verify{
+color:#1da1ff;
 }
 
-@keyframes floaty{
-0%{
-transform:translateX(-50%) translateY(0);
-}
-50%{
-transform:translateX(-50%) translateY(-3px);
-}
-100%{
-transform:translateX(-50%) translateY(0);
-}
-}
 
-</style>
+<!-- ADD THIS BEFORE </body> -->
 
 <script>
 
-/* FAKE LIVE COUNTERS */
-
 setInterval(() => {
 
-let watching =
+let el =
 document.getElementById("watching");
 
-let current =
-parseInt(watching.innerText);
+let num =
+parseInt(el.innerText);
 
-let random =
-Math.floor(Math.random() * 8);
+num += Math.floor(Math.random()*6)-2;
 
-let plusminus =
-Math.random() > 0.5 ? 1 : -1;
+el.innerText = num;
 
-watching.innerText =
-current + (random * plusminus);
-
-}, 2000);
-
-/* TIMER */
-
-let minutes = 4;
-let seconds = 54;
-
-setInterval(() => {
-
-seconds--;
-
-if(seconds < 0){
-seconds = 59;
-minutes--;
-}
-
-if(minutes < 0){
-minutes = 4;
-seconds = 54;
-}
-
-document.getElementById("timer").innerHTML =
-"🕒 " +
-String(minutes).padStart(2,'0') +
-":" +
-String(seconds).padStart(2,'0');
-
-},1000);
+},2000);
 
 </script>
