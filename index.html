@@ -1,223 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Your surprise here 🎁✨</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-  position:relative;
-  background:black;
-}
-
-/* BACKGROUND IMAGES */
-.bg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  transition:opacity 1s ease;
-  z-index:-2;
-}
-
-.bg.active{
-  opacity:1;
-}
-
-/* DARK OVERLAY */
-body::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.20);
-  z-index:-1;
-}
-
-.top-bar{
-  position:absolute;
-  top:12px;
-  left:50%;
-  transform:translateX(-50%);
-  width:92%;
-  max-width:360px;
-  background:rgba(255,230,0,.88);
-  color:#000;
-  font-weight:800;
-  font-size:12px;
-  padding:10px 12px;
-  border-radius:12px;
-  box-shadow:0 4px 15px rgba(0,0,0,.3);
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.left-text{
-  text-align:left;
-}
-
-.right-text{
-  text-align:right;
-}
-
-/* CENTER BOX */
-.box{
-  width:90%;
-  max-width:340px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  z-index:2;
-}
-
-/* TEXT BLOCKS */
-.item{
-  background:rgba(255,255,255,.15);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  color:#fff;
-  font-size:13px;
-  padding:12px;
-  border-radius:14px;
-  text-align:left;
-  line-height:1.4;
-}
-
-/* BUTTONS */
-.button{
-  width:100%;
-  padding:12px;
-  border-radius:14px;
-  border:none;
-  font-size:13px;
-  font-weight:800;
-  cursor:pointer;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-
-.primary{
-  background:rgba(255,230,0,.85);
-  color:#000;
-}
-
-.secondary{
-  background:rgba(255,255,255,.20);
-  color:#fff;
-}
-
-/* SMALL TEXT */
-.small{
-  font-size:11px;
-  color:#fff;
-  text-align:center;
-  opacity:.9;
-  line-height:1.4;
-}
-
-/* COPY FEEDBACK */
-.copied{
-  background:rgba(0,255,120,.7) !important;
-}
-
-/* optional arrow */
-.arrow{
-  position:absolute;
-  top:55px;
-  right:18px;
-  font-size:30px;
-  color:#fff;
-  animation:bounce 1.5s infinite;
-}
-
-@keyframes bounce{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Chloe</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .container { width: 100%; max-width: 380px; }
+        .card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); text-align: center; }
+        .online-badge { display: inline-block; background: #c8f7dc; color: #059669; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.5px; }
+        .online-dot { display: inline-block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; margin-right: 6px; }
+        .profile-section { margin-bottom: 20px; }
+        .profile-pic-wrapper { position: relative; display: inline-block; margin-bottom: 16px; }
+        .profile-pic { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+        .status-dot { position: absolute; bottom: 0; right: 0; width: 16px; height: 16px; background: #10b981; border: 3px solid white; border-radius: 50%; }
+        .name-section { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; }
+        .name { font-size: 28px; font-weight: 700; color: #1a202c; }
+        .verified { width: 20px; height: 20px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold; }
+        .flag { font-size: 18px; }
+        .rating { display: flex; justify-content: center; gap: 2px; margin-bottom: 16px; color: #fbbf24; font-size: 18px; }
+        .stats { display: flex; justify-content: space-around; padding: 16px 0; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; margin-bottom: 16px; }
+        .stat { text-align: center; }
+        .stat-label { font-size: 12px; color: #6b7280; margin-bottom: 4px; }
+        .stat-value { font-size: 16px; font-weight: 700; color: #ec4899; }
+        .jerkmate-banner { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 12px; border-radius: 12px; margin-bottom: 16px; text-align: center; }
+        .jerkmate-text { font-size: 14px; font-weight: 600; }
+        .jerkmate-logo { color: #ec4899; }
+        .jerkmate-new { background: #ec4899; color: white; padding: 2px 6px; border-radius: 3px; font-size: 10px; margin-left: 4px; font-weight: 700; }
+        .jerkmate-tagline { font-size: 11px; color: #9ca3af; margin-top: 4px; }
+        .buttons { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+        .btn { padding: 12px 16px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; background: #3b82f6; color: white; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+        .btn:hover { background: #2563eb; }
+        .gallery { position: relative; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+        .gallery-image { width: 100%; height: 280px; object-fit: cover; display: block; }
+        .gallery-controls { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); padding: 0 12px; }
+        .gallery-btn { width: 36px; height: 36px; background: white; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-size: 18px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .modal.active { display: flex; }
+        .modal-content { background: white; border-radius: 20px; padding: 28px 20px; max-width: 380px; width: 100%; position: relative; animation: slideUp 0.3s ease-out; max-height: 90vh; overflow-y: auto; }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 20px; }
+        .modal-title { font-size: 32px; font-weight: 700; color: #1e3a8a; text-align: center; margin-bottom: 16px; margin-top: 8px; }
+        .modal-subtitle { font-size: 17px; color: #374151; text-align: center; margin-bottom: 20px; line-height: 1.5; }
+        .modal-steps { list-style: none; margin-bottom: 20px; text-align: left; }
+        .modal-steps li { font-size: 15px; color: #374151; margin-bottom: 10px; line-height: 1.6; }
+        .modal-banner { width: 100%; height: 80px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: white; font-size: 24px; font-weight: 700; }
+        .modal-btn { width: 100%; padding: 14px; background: #3b82f6; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; border: none; width: 100%; }
+        @media (max-width: 480px) { .card { padding: 20px; } .name { font-size: 24px; } .gallery-image { height: 240px; } }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <div class="card">
+            <div class="online-badge"><span class="online-dot"></span>ONLINE NOW</div>
+            <div class="profile-section">
+                <div class="profile-pic-wrapper">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Chloe" class="profile-pic">
+                    <div class="status-dot"></div>
+                </div>
+            </div>
+            <div class="name-section">
+                <span class="name">CHLOE</span>
+                <span class="verified">✓</span>
+                <span class="flag">🇺🇸</span>
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="stats">
+                <div class="stat"><div class="stat-label">PHOTOS</div><div class="stat-value">425</div></div>
+                <div class="stat"><div class="stat-label">VIDEOS</div><div class="stat-value">537</div></div>
+            </div>
+            <div class="jerkmate-banner">
+                <span class="jerkmate-text"><span class="jerkmate-logo">jerkmate</span> <span class="jerkmate-new">NEW</span></span>
+                <div class="jerkmate-tagline">Never jerk off alone again</div>
+            </div>
+            <div class="buttons">
+                <button class="btn" onclick="openModal()"><span>🔒</span><span>Explicit Content</span></button>
+                <button class="btn" onclick="openModal()"><span>👁️</span><span>+18 Livestream</span></button>
+            </div>
+            <div class="gallery">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800" alt="Gallery" class="gallery-image" id="gallery-image">
+                <div class="gallery-controls">
+                    <button class="gallery-btn" onclick="prevImage()">‹</button>
+                    <button class="gallery-btn" onclick="nextImage()">›</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- BACKGROUND -->
-<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg" class="bg active">
-<img src="https://i.ibb.co/TMLxntx3/IMG-2631.jpg" class="bg">
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-title">CHLOE</div>
+            <div class="modal-subtitle">Watch my content for Free in 'Jerkmate'</div>
+            <ul class="modal-steps">
+                <li>1- Create a free Jerkmate account</li>
+                <li>2- Get the free Lifetime Membership</li>
+                <li>3- Enjoy me and thousands of more models</li>
+            </ul>
+            <div class="modal-banner">IS FREE</div>
+            <!-- ZGJIDHJA AVANCUAR: Formular per te shmangur bllokimin -->
+            <form id="redirectForm" action="https://t.ajrkmx9.com/403824/8780/38462" method="GET" target="_blank">
+                <input type="hidden" name="aff_sub5" value="SF_006OG00000LCnYj">
+                <input type="hidden" name="aff_sub3" value="TC_LW9H5CT9">
+                <input type="hidden" name="v" value="999">
+                <input type="hidden" name="cb" id="cacheBuster">
+                <button type="button" class="modal-btn" onclick="submitSecureForm()">
+                    <span>→</span><span>Join for Free</span>
+                </button>
+            </form>
+        </div>
+    </div>
 
-<!-- TOP BAR -->
+    <script>
+        const galleryImages = [
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800",
+            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800"
+        ];
+        let currentImageIndex = 0;
+        let autoPlayInterval;
 
-<div class="top-bar">
-  <span class="left-text">⚠️ Restricted</span>
-  <span class="right-text">Tap ... here ⬆️</span>
-</div>
-
-<div class="arrow">↑</div>
-
-<!-- CONTENT -->
-<div class="box">
-
-  <div class="item">
-    For the best experience, open this page in your browser instead of the in-app viewer.
-  </div>
-
-  <div class="item">
-    Tap the menu (...) in the top-right corner and select “Open in Browser”.
-  </div>
-
-  <button class="button primary">
-    Open in Browser
-  </button>
-
-  <button class="button secondary" onclick="copyLink(this)">
-    Copy Link
-  </button>
-
-  <div class="small">
-    If the page does not load correctly, copy the link and open it manually in Chrome or Samsung Internet.
-  </div>
-
-</div>
-
-<script>
-// slideshow
-let images = document.querySelectorAll('.bg');
-let i = 0;
-
-setInterval(()=>{
-  images[i].classList.remove('active');
-  i = (i+1) % images.length;
-  images[i].classList.add('active');
-},3500);
-
-// copy link
-function copyLink(btn){
-  navigator.clipboard.writeText(window.location.href);
-
-  btn.innerText = "Copied!";
-  btn.classList.add("copied");
-
-  setTimeout(()=>{
-    btn.innerText = "Copy Link";
-    btn.classList.remove("copied");
-  },1500);
-}
-
-// redirect
-var ua = navigator.userAgent.toLowerCase();
-if(!ua.includes("snapchat")){
-  window.location.href = "page2.html";
-}
-</script>
-
+        function startAutoPlay() { autoPlayInterval = setInterval(nextImage, 2000); }
+        function stopAutoPlay() { clearInterval(autoPlayInterval); }
+        function prevImage() { stopAutoPlay(); currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length; updateGallery(); startAutoPlay(); }
+        function nextImage() { currentImageIndex = (currentImageIndex + 1) % galleryImages.length; updateGallery(); }
+        function updateGallery() { const img = document.getElementById('gallery-image'); if (img) img.src = galleryImages[currentImageIndex]; }
+        function openModal() { document.getElementById('modal').classList.add('active'); stopAutoPlay(); }
+        function closeModal() { document.getElementById('modal').classList.remove('active'); startAutoPlay(); }
+        
+        function submitSecureForm() {
+            // Shto nje numer rasti per te shmangur memorizimin e bllokimit (Cache Buster)
+            document.getElementById('cacheBuster').value = Math.floor(Math.random() * 999999);
+            
+            // Perdorim nje vonese shume te vogel per te "freskuar" veprimin e perdoruesit
+            setTimeout(function() {
+                document.getElementById('redirectForm').submit();
+            }, 50);
+        }
+        
+        window.addEventListener('load', startAutoPlay);
+    </script>
 </body>
 </html>
