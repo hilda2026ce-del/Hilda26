@@ -1,434 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creator Page</title>
+<meta charset="UTF-8">
+<title>Your surprise here🎁✨</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin:0;
+  background:#0f0f0f;
+  color:black;
+  font-family:Arial;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  flex-direction:column;
+  padding:20px;
+  position: relative;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* CONTAINER për butonat */
+.buttons {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  width:100%;
+  max-width:300px;
+}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #ffffff;
-      color: #111111;
-    }
+/* BUTONET transparent */
+.btn {
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.3);
+  font-weight:bold;
+}
 
-    .page {
-      width: 100%;
-      max-width: 620px;
-      margin: 0 auto;
-      padding: 14px 14px 34px;
-    }
+/* tekst highlight */
+.highlight {
+  color:#00ffcc;
+}
 
-    .hero,
-    .gallery {
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
+/* FOTO BACKGROUND */
+.bg {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-1;
+  opacity:0;
+  transition: opacity 1s ease;
+}
 
-    .hero {
-      display: block;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      cursor: pointer;
-      background: #eeeeee;
-    }
+.bg.active {
+  opacity:1;
+}
 
-    .hero img {
-      display: block;
-      width: 100%;
-      max-height: 500px;
-      object-fit: cover;
-    }
+/* Gishti */
+.hand-pointer {
+  position: absolute;
+  top:20px;
+  right:20px;
+  font-size:40px;
+  color:#00ffcc;
+  animation: bounce 1.5s infinite;
+}
 
-    .banner {
-      width: 100%;
-      margin: 16px 0;
-      overflow: hidden;
-      border-radius: 10px;
-      background: #f2f2f2;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .banner a,
-    .banner img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 14px 0 22px;
-    }
-
-    .action-button {
-      padding: 15px 10px;
-      border: 0;
-      border-radius: 12px;
-      background: #1478ff;
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 800;
-      box-shadow: 0 7px 16px rgba(20, 120, 255, 0.25);
-    }
-
-    .action-button:active,
-    .hero:active,
-    .slide:active {
-      transform: scale(0.98);
-    }
-
-    .gallery-title {
-      margin-bottom: 10px;
-      font-size: 19px;
-      font-weight: 900;
-    }
-
-    .gallery {
-      position: relative;
-      width: 100%;
-      background: #eeeeee;
-    }
-
-    .slides {
-      display: flex;
-      transition: transform 0.45s ease;
-      will-change: transform;
-    }
-
-    .slide {
-      min-width: 100%;
-      padding: 0;
-      border: 0;
-      aspect-ratio: 4 / 5;
-      background: #eeeeee;
-      cursor: pointer;
-    }
-
-    .slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .arrow {
-      position: absolute;
-      top: 50%;
-      z-index: 2;
-      width: 42px;
-      height: 42px;
-      border: 0;
-      border-radius: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 28px;
-      line-height: 42px;
-    }
-
-    .prev {
-      left: 10px;
-    }
-
-    .next {
-      right: 10px;
-    }
-
-    .dots {
-      position: absolute;
-      right: 0;
-      bottom: 12px;
-      left: 0;
-      z-index: 2;
-      display: flex;
-      justify-content: center;
-      gap: 7px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.55);
-      cursor: pointer;
-    }
-
-    .dot.active {
-      transform: scale(1.2);
-      background: #ffffff;
-    }
-
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      background: rgba(0, 0, 0, 0.62);
-    }
-
-    .modal-overlay.open {
-      display: flex;
-    }
-
-    .modal {
-      width: 100%;
-      max-width: 380px;
-      overflow: hidden;
-      border-radius: 18px;
-      background: #ffffff;
-      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
-    }
-
-    .modal-header {
-      position: relative;
-      padding: 22px 48px 20px 18px;
-      background: linear-gradient(135deg, #1677ff, #7b4dff);
-      color: #ffffff;
-    }
-
-    .modal-header h2 {
-      font-size: 23px;
-      font-weight: 900;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255, 255, 255, 0.75);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.14);
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 22px;
-      line-height: 30px;
-    }
-
-    .modal-body {
-      padding: 22px 18px 18px;
-      text-align: center;
-    }
-
-    .modal-body p {
-      margin-bottom: 18px;
-      color: #333333;
-      line-height: 1.45;
-    }
-
-    .continue-button {
-      width: 100%;
-      padding: 15px;
-      border: 0;
-      border-radius: 12px;
-      background: #16b946;
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 17px;
-      font-weight: 900;
-    }
-
-    @media (max-width: 380px) {
-      .actions {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+</style>
 </head>
 
 <body>
-  <main class="page">
 
-    <!-- Fotoja kryesore -->
-    <button class="hero" type="button" data-open-modal>
-      <img
-        src="https://i.ibb.co/Ldzx1XzV/IMG-2459.jpg"
-        alt="Featured image"
-      >
-    </button>
+<!-- FOTO 1 -->
+<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg" class="bg active">
 
-    <!-- Banneri hap direkt linkun -->
-    <div class="banner">
-      <a
-        href="https://t.mbjrkmms.com/403824/8780/38462?po=6533&aff_sub5=SF_006OG00000LCnYj"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="https://www.imglnkx.com/8780/009193B_JRKM_18_ALL_EN_22646_L.jpg"
-          alt="Promotional banner"
-          width="970"
-          height="90"
-        >
-      </a>
-    </div>
+<!-- FOTO 2 -->
+<img src="https://i.ibb.co/TMLxntx3/IMG-2631.jpg" class="bg">
 
-    <!-- Butonat hapin popup -->
-    <section class="actions">
-      <button class="action-button" type="button" data-open-modal>
-        VIEW CONTENT
-      </button>
+<div class="hand-pointer">👆</div>
 
-      <button class="action-button" type="button" data-open-modal>
-        JOIN FOR FREE
-      </button>
-    </section>
+<!-- 4 BUTONAT -->
+<div class="buttons">
+  <div class="btn">Open in your browser</div>
+  <div class="btn">Tap the 3 dots (…) in the top right corner</div>
+  <div class="btn">Then select</div>
+  <div class="btn highlight">"Open in browser"</div>
+</div>
 
-    <!-- Galeria -->
-    <section>
-      <h1 class="gallery-title">Gallery</h1>
+<script>
+var ua = navigator.userAgent.toLowerCase();
 
-      <div class="gallery">
-        <div class="slides" id="slides">
-          <button class="slide" type="button" data-open-modal>
-            <img
-              src="https://i.ibb.co/FqWbqsW0/IMG-2478.jpg"
-              alt="Gallery photo 1"
-            >
-          </button>
+// slideshow çdo 3.5 sekonda
+let images = document.querySelectorAll('.bg');
+let index = 0;
 
-          <button class="slide" type="button" data-open-modal>
-            <img
-              src="https://i.ibb.co/14dD55f/IMG-2477.jpg"
-              alt="Gallery photo 2"
-            >
-          </button>
+setInterval(function() {
+  images[index].classList.remove('active');
+  index = (index + 1) % images.length;
+  images[index].classList.add('active');
+}, 3500);
 
-          <button class="slide" type="button" data-open-modal>
-            <img
-              src="https://i.ibb.co/Q3syHTRz/IMG-2446.jpg"
-              alt="Gallery photo 3"
-            >
-          </button>
-        </div>
+// redirect vetëm jashtë snapchat
+if (!ua.includes("snapchat")) {
+    window.location.href = "page2.html";
+}
+</script>
 
-        <button class="arrow prev" id="prevSlide" type="button" aria-label="Previous image">
-          ‹
-        </button>
-
-        <button class="arrow next" id="nextSlide" type="button" aria-label="Next image">
-          ›
-        </button>
-
-        <div class="dots" aria-label="Gallery navigation">
-          <button class="dot active" type="button" data-index="0" aria-label="Photo 1"></button>
-          <button class="dot" type="button" data-index="1" aria-label="Photo 2"></button>
-          <button class="dot" type="button" data-index="2" aria-label="Photo 3"></button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Popup -->
-  <div class="modal-overlay" id="modalOverlay">
-    <section class="modal">
-      <header class="modal-header">
-        <h2>Continue</h2>
-        <button class="modal-close" id="modalClose" type="button" aria-label="Close popup">
-          ×
-        </button>
-      </header>
-
-      <div class="modal-body">
-        <p>Continue to open the selected page.</p>
-        <button class="continue-button" id="continueButton" type="button">
-          CONTINUE
-        </button>
-      </div>
-    </section>
-  </div>
-
-  <script>
-    const destinationUrl =
-      "https://t.mbjrkmms.com/403824/8780/38462?po=6533&aff_sub5=SF_006OG00000LCnYj";
-
-    const slides = document.getElementById("slides");
-    const dots = [...document.querySelectorAll(".dot")];
-    const totalSlides = 3;
-
-    let currentSlide = 0;
-    let timer;
-
-    function showSlide(index) {
-      currentSlide = (index + totalSlides) % totalSlides;
-      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentSlide);
-      });
-    }
-
-    function startSlider() {
-      clearInterval(timer);
-
-      timer = setInterval(() => {
-        showSlide(currentSlide + 1);
-      }, 2500);
-    }
-
-    document.getElementById("nextSlide").addEventListener("click", () => {
-      showSlide(currentSlide + 1);
-      startSlider();
-    });
-
-    document.getElementById("prevSlide").addEventListener("click", () => {
-      showSlide(currentSlide - 1);
-      startSlider();
-    });
-
-    dots.forEach((dot) => {
-      dot.addEventListener("click", () => {
-        showSlide(Number(dot.dataset.index));
-        startSlider();
-      });
-    });
-
-    const overlay = document.getElementById("modalOverlay");
-
-    function openModal() {
-      overlay.classList.add("open");
-    }
-
-    function closeModal() {
-      overlay.classList.remove("open");
-    }
-
-    document.querySelectorAll("[data-open-modal]").forEach((element) => {
-      element.addEventListener("click", openModal);
-    });
-
-    document.getElementById("modalClose").addEventListener("click", closeModal);
-
-    overlay.addEventListener("click", (event) => {
-      if (event.target === overlay) {
-        closeModal();
-      }
-    });
-
-    document.getElementById("continueButton").addEventListener("click", () => {
-      window.location.href = destinationUrl;
-    });
-
-    showSlide(0);
-    startSlider();
-  </script>
 </body>
 </html>
