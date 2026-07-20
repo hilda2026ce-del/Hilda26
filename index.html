@@ -1,120 +1,157 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Your surprise here🎁✨</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {
-  margin:0;
-  background:#0f0f0f;
-  color:black;
-  font-family:Arial;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  flex-direction:column;
-  padding:20px;
-  position: relative;
-}
+<!-- Në kodin tënd ekzistues, mbaji të pandryshuara:
+     - profilin
+     - foton e profilit
+     - bannerin
+     - gallery / slider
+     - CSS-in e dizajnit
+-->
 
-/* CONTAINER për butonat */
-.buttons {
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  width:100%;
-  max-width:300px;
-}
+<!-- ZËVENDËSO VETËM PJESËN E BUTONAVE ME KËTË -->
+<section class="buttons">
+  <button class="action-button" type="button" data-open-modal>
+    <span>View details</span>
+  </button>
 
-/* BUTONET transparent */
-.btn {
-  background: rgba(255,255,255,0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding:15px;
-  border-radius:12px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.3);
-  font-weight:bold;
-}
+  <button class="action-button" type="button" data-open-modal>
+    <span>Watch livestream</span>
+  </button>
+</section>
 
-/* tekst highlight */
-.highlight {
-  color:#00ffcc;
-}
+<!-- SHTO KËTË POPUP NJË HERË, PARA TAGUT </body> -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <section
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <button
+      id="modalClose"
+      class="modal-close"
+      type="button"
+      aria-label="Mbyll popup-in"
+    >
+      ×
+    </button>
 
-/* FOTO BACKGROUND */
-.bg {
-  position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-1;
-  opacity:0;
-  transition: opacity 1s ease;
-}
+    <h2 id="modalTitle">Continue</h2>
+    <p>Click Continue to proceed.</p>
 
-.bg.active {
-  opacity:1;
-}
-
-/* Gishti */
-.hand-pointer {
-  position: absolute;
-  top:20px;
-  right:20px;
-  font-size:40px;
-  color:#00ffcc;
-  animation: bounce 1.5s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-</style>
-</head>
-
-<body>
-
-<!-- FOTO 1 -->
-<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg" class="bg active">
-
-<!-- FOTO 2 -->
-<img src="https://i.ibb.co/TMLxntx3/IMG-2631.jpg" class="bg">
-
-<div class="hand-pointer">👆</div>
-
-<!-- 4 BUTONAT -->
-<div class="buttons">
-  <div class="btn">Open in your browser</div>
-  <div class="btn">Tap the 3 dots (…) in the top right corner</div>
-  <div class="btn">Then select</div>
-  <div class="btn highlight">"Open in browser"</div>
+    <button id="continueButton" class="continue-button" type="button">
+      CONTINUE
+    </button>
+  </section>
 </div>
 
+<style>
+  /* Këto stile janë vetëm për popup-in; nuk prekin gallery-n. */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.62);
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    position: relative;
+    width: min(100%, 390px);
+    padding: 32px 24px 24px;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+    color: #17146f;
+    text-align: center;
+  }
+
+  .modal h2 {
+    margin: 0 0 12px;
+    font-size: 28px;
+  }
+
+  .modal p {
+    margin: 0 0 22px;
+    color: #3b3b3b;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #222222;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .continue-button {
+    width: 100%;
+    padding: 15px 20px;
+    border: 0;
+    border-radius: 12px;
+    background: #1d63e8;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 800;
+  }
+</style>
+
 <script>
-var ua = navigator.userAgent.toLowerCase();
+  /*
+    Ndrysho vetëm këtë URL me destinacionin tënd të përshtatshëm.
+    Gallery, banneri dhe fotoja e profilit nuk preken nga ky script.
+  */
+  const POPUP_FINAL_LINK = "https://example.com";
 
-// slideshow çdo 3.5 sekonda
-let images = document.querySelectorAll('.bg');
-let index = 0;
+  const modalOverlay = document.getElementById("modalOverlay");
+  const modalClose = document.getElementById("modalClose");
+  const continueButton = document.getElementById("continueButton");
+  const buttons = document.querySelectorAll("[data-open-modal]");
 
-setInterval(function() {
-  images[index].classList.remove('active');
-  index = (index + 1) % images.length;
-  images[index].classList.add('active');
-}, 3500);
+  function openModal() {
+    modalOverlay.classList.add("open");
+    modalOverlay.setAttribute("aria-hidden", "false");
+  }
 
-// redirect vetëm jashtë snapchat
-if (!ua.includes("snapchat")) {
-    window.location.href = "page2.html";
-}
+  function closeModal() {
+    modalOverlay.classList.remove("open");
+    modalOverlay.setAttribute("aria-hidden", "true");
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", openModal);
+  });
+
+  modalClose.addEventListener("click", closeModal);
+
+  modalOverlay.addEventListener("click", function (event) {
+    if (event.target === modalOverlay) {
+      closeModal();
+    }
+  });
+
+  continueButton.addEventListener("click", function () {
+    window.location.assign(POPUP_FINAL_LINK);
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
 </script>
-
-</body>
-</html>
