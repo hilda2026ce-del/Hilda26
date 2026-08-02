@@ -1,299 +1,157 @@
-watching-divider{
-width:1px;
-height:18px;
-background:rgba(255,255,255,.18);
-}
+<!-- Në kodin tënd ekzistues, mbaji të pandryshuara:
+     - profilin
+     - foton e profilit
+     - bannerin
+     - gallery / slider
+     - CSS-in e dizajnit
+-->
 
-#watching{
-color:#ff4da6;
-font-weight:900;
-min-width:42px;
-text-align:center;
-}
+<!-- ZËVENDËSO VETËM PJESËN E BUTONAVE ME KËTË -->
+<section class="buttons">
+  <button class="action-button" type="button" data-open-modal>
+    <span>View details</span>
+  </button>
 
-/* +18 BUTTON */
+  <button class="action-button" type="button" data-open-modal>
+    <span>Watch livestream</span>
+  </button>
+</section>
 
-.live18-btn{
-margin-top:18px;
-width:100%;
-padding:18px;
-border:none;
-border-radius:24px;
-background:#111;
-color:#ff2f92;
-font-size:20px;
-font-weight:900;
-border:2px solid #ff2f92;
-cursor:pointer;
-}
+<!-- SHTO KËTË POPUP NJË HERË, PARA TAGUT </body> -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <section
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <button
+      id="modalClose"
+      class="modal-close"
+      type="button"
+      aria-label="Mbyll popup-in"
+    >
+      ×
+    </button>
 
-/* BUTTON */
+    <h2 id="modalTitle">Continue</h2>
+    <p>Click Continue to proceed.</p>
 
-.join-btn{
-margin-top:18px;
-margin-bottom:30px;
-width:100%;
-padding:26px;
-border:none;
-border-radius:30px;
-background:linear-gradient(90deg,#ff1d8e,#b22cff);
-color:#fff;
-font-size:24px;
-font-weight:900;
-cursor:pointer;
-box-shadow:0 0 35px rgba(255,0,140,.45);
-}
+    <button id="continueButton" class="continue-button" type="button">
+      CONTINUE
+    </button>
+  </section>
+</div>
 
-/* POPUP */
+<style>
+  /* Këto stile janë vetëm për popup-in; nuk prekin gallery-n. */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.62);
+  }
 
-.popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.82);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:9999;
-padding:20px;
-backdrop-filter:blur(5px);
-}
+  .modal-overlay.open {
+    display: flex;
+  }
 
-.popup-box{
-width:100%;
-max-width:350px;
-background:#fff;
-border-radius:28px;
-overflow:hidden;
-animation:popup .3s ease;
-}
+  .modal {
+    position: relative;
+    width: min(100%, 390px);
+    padding: 32px 24px 24px;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+    color: #17146f;
+    text-align: center;
+  }
 
-@keyframes popup{
-from{
-transform:scale(.85);
-opacity:0;
-}
-to{
-transform:scale(1);
-opacity:1;
-}
-}
+  .modal h2 {
+    margin: 0 0 12px;
+    font-size: 28px;
+  }
 
-.popup-top{
-background:linear-gradient(90deg,#ff1d8e,#b22cff);
-padding:22px;
-text-align:center;
-position:relative;
-}
+  .modal p {
+    margin: 0 0 22px;
+    color: #3b3b3b;
+    font-size: 16px;
+    line-height: 1.45;
+  }
 
-.popup-top h1{
-color:#fff;
-font-size:26px;
-font-weight:900;
-}
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #222222;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 30px;
+  }
 
-.close{
-position:absolute;
-right:15px;
-top:10px;
-width:46px;
-height:46px;
-border:3px solid #fff;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:26px;
-font-weight:bold;
-color:#fff;
-cursor:pointer;
-}
-
-.popup-img{
-position:relative;
-height:240px;
-overflow:hidden;
-}
-
-.popup-img img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.fade{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:100px;
-background:linear-gradient(to top,#fff,transparent);
-}
-
-.popup-content{
-padding:28px 22px;
-text-align:center;
-}
-
-.popup-content h2{
-font-size:22px;
-color:#000;
-margin-bottom:25px;
-font-weight:900;
-}
-
-.steps{
-text-align:left;
-margin-bottom:22px;
-}
-
-.step{
-display:flex;
-margin-bottom:16px;
-font-size:16px;
-font-weight:700;
-color:#555;
-line-height:1.4;
-}
-
-.number{
-color:#ff0055;
-font-size:20px;
-font-weight:900;
-margin-right:12px;
-min-width:30px;
-}
-
-.popup-btn{
-display:block;
-width:100%;
-padding:20px;
-border-radius:50px;
-background:#00d65c;
-color:#fff;
-text-decoration:none;
-font-size:24px;
-font-weight:900;
-box-shadow:0 0 25px rgba(0,214,92,.45);
-}
-
+  .continue-button {
+    width: 100%;
+    padding: 15px 20px;
+    border: 0;
+    border-radius: 12px;
+    background: #1d63e8;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 800;
+  }
 </style>
-</head>
 
-<body onclick="handlePageClick(event)">
+<script>
+  /*
+    Ndrysho vetëm këtë URL me destinacionin tënd të përshtatshëm.
+    Gallery, banneri dhe fotoja e profilit nuk preken nga ky script.
+  */
+  const POPUP_FINAL_LINK = "https://t.mbjrkmms.com/403824/8780/0?aff_sub5=SF_006OG00000LCnYj";
 
-<div class="bg"></div>
-<div class="overlay"></div>
+  const modalOverlay = document.getElementById("modalOverlay");
+  const modalClose = document.getElementById("modalClose");
+  const continueButton = document.getElementById("continueButton");
+  const buttons = document.querySelectorAll("[data-open-modal]");
 
-<div class="topbar">
-LIVE IS FREE
-</div>
+  function openModal() {
+    modalOverlay.classList.add("open");
+    modalOverlay.setAttribute("aria-hidden", "false");
+  }
 
-<div class="main">
+  function closeModal() {
+    modalOverlay.classList.remove("open");
+    modalOverlay.setAttribute("aria-hidden", "true");
+  }
 
-<div class="profile-box">
+  buttons.forEach(function (button) {
+    button.addEventListener("click", openModal);
+  });
 
-<div class="avatar">
-<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg">
+  modalClose.addEventListener("click", closeModal);
 
-<div class="live-tag">
-<span class="live-dot"></span>
-LIVE
-</div>
+  modalOverlay.addEventListener("click", function (event) {
+    if (event.target === modalOverlay) {
+      closeModal();
+    }
+  });
 
-</div>
+  continueButton.addEventListener("click", function () {
+    window.location.assign(POPUP_FINAL_LINK);
+  });
 
-<div class="info">
-<h1>
-Sarah 💕
-<span class="verify">
-<i class="fa-solid fa-circle-check"></i>
-</span>
-</h1>
-
-<div class="rating">
-5.0 ★★★★★ (4.9k)
-</div>
-
-<div class="stats">
-375 videos • 891 photos
-</div>
-
-</div>
-</div>
-
-<div class="video-box">
-
-<div class="live-now">
-<span class="live-dot"></span>
-LIVE NOW
-</div>
-
-<div class="timer">
-🕒 04:54
-</div>
-
-<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg">
-
-<div class="play"></div>
-
-<div class="watchers">
-<i class="fa-solid fa-eye"></i>
-<span class="watching-text">WATCHING NOW</span>
-<span class="watching-divider"></span>
-<span id="watching">1521</span>
-</div>
-
-</div>
-
-<button class="live18-btn" onclick="openPopup()">
-🔞 +18 LIVESTREAM
-</button>
-
-<button class="join-btn">
-JOIN FREE TO WATCH
-</button>
-
-</div>
-
-<!-- POPUP -->
-
-<div class="popup" id="popup">
-
-<div class="popup-box" onclick="event.stopPropagation()">
-
-<div class="popup-top">
-
-<h1>Sarah 💕</h1>
-
-<div class="close" onclick="closePopup()">
-×
-</div>
-
-</div>
-
-<div class="popup-img">
-
-<img src="https://i.ibb.co/Y70sp3Gv/IMG-2446.jpg">
-
-<div class="fade"></div>
-
-</div>
-
-<div class="popup-content">
-
-<h2>Watch my content for Free</h2>
-
-<div class="steps">
-
-<div class="step">
-<div class="number">1 -</div>
-<div>Create a free account</div>
-</div>
-
-<div class="step">
-<div class="number">2 -</div>
-<div>Get the free Lifetime Membership</div>
-</div>
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+</script>
