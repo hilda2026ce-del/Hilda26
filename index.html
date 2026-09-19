@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Private Access Check</title>
 
 <style>
@@ -15,260 +16,246 @@ html, body {
     margin: 0;
     padding: 0;
     min-height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #edf3fa;
-    color: #111827;
 }
 
 body {
+    background: #edf3fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    color: #151c2b;
+
     display: flex;
     justify-content: center;
-    padding: 45px 12px 35px;
+
+    padding: 25px 12px 30px;
 }
 
 .page {
     width: 100%;
-    max-width: 750px;
+    max-width: 430px;
+}
+
+/* CARD */
+
+.card {
+    background: #ffffff;
+    border-radius: 32px;
+    overflow: hidden;
+
+    box-shadow:
+        0 18px 45px rgba(40, 65, 90, 0.10),
+        0 2px 8px rgba(40, 65, 90, 0.05);
+
     text-align: center;
 }
 
-/* MAIN CARD */
-.card {
-    background: #fff;
-    border-radius: 48px;
-    overflow: hidden;
-    box-shadow: 0 25px 60px rgba(40, 70, 100, 0.10);
-}
+/* CONTENT */
 
-/* TOP CONTENT */
 .content {
-    padding: 85px 35px 55px;
+    padding: 48px 22px 35px;
 }
 
 .small-title {
-    color: #16b79f;
-    font-size: 25px;
+    color: #16b59f;
+    font-size: 15px;
     font-weight: 800;
-    letter-spacing: 1.5px;
-    margin-bottom: 38px;
+    letter-spacing: 1.2px;
+
+    margin-bottom: 22px;
 }
 
 h1 {
-    font-size: 68px;
+    margin: 0 auto 22px;
+
+    max-width: 360px;
+
+    font-size: 38px;
     line-height: 1.08;
-    margin: 0 auto 48px;
+    letter-spacing: -1px;
     font-weight: 800;
-    max-width: 650px;
-    letter-spacing: -2px;
 }
 
 .description {
-    color: #6c7484;
-    font-size: 35px;
-    line-height: 1.35;
-    margin: 0 auto 58px;
-    max-width: 650px;
+    margin: 0 auto 30px;
+
+    max-width: 340px;
+
+    color: #6f7888;
+    font-size: 17px;
+    line-height: 1.45;
 }
 
 .instruction {
-    font-size: 31px;
-    font-weight: 700;
     color: #202938;
-    margin-bottom: 70px;
+    font-size: 17px;
+    font-weight: 700;
+
+    margin-bottom: 30px;
 }
 
-/* HOLD BUTTON */
-.hold-wrapper {
-    width: 440px;
-    height: 440px;
-    max-width: 80vw;
-    max-height: 80vw;
-    margin: auto;
+/* REAL LINK */
+
+.hold-link {
+    display: block;
+
+    width: 215px;
+    height: 215px;
+
+    margin: 0 auto;
+
+    padding: 7px;
+
     border-radius: 50%;
-    padding: 13px;
-    background: conic-gradient(
-        #b8e5e2 0deg,
-        #b8e5e2 var(--progress),
-        #dce3e9 var(--progress),
-        #dce3e9 360deg
-    );
-    box-shadow: 0 15px 35px rgba(80, 100, 120, 0.12);
-    touch-action: none;
-    user-select: none;
+
+    background: #c8e8e5;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
     -webkit-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: default;
 }
 
-.hold-button {
+.hold-inner {
     width: 100%;
     height: 100%;
+
     border-radius: 50%;
-    background: #fff;
+
+    background: #ffffff;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    cursor: pointer;
+    justify-content: center;
+
+    box-shadow:
+        inset 0 0 0 1px #edf0f3,
+        0 8px 22px rgba(50, 70, 90, 0.08);
 }
 
 .lock {
-    font-size: 75px;
-    margin-bottom: 25px;
+    font-size: 43px;
+    line-height: 1;
+
+    margin-bottom: 17px;
 }
 
 .press-text {
     color: #7b8799;
-    font-size: 30px;
+
+    font-size: 15px;
     font-weight: 800;
-    letter-spacing: 2px;
+
+    letter-spacing: 1.3px;
 }
 
-.continue-text {
-    margin-top: 55px;
-    font-size: 27px;
-    color: #7b8799;
-    font-weight: 700;
+.hold-caption {
+    margin-top: 20px;
+
+    color: #7d8999;
+
+    font-size: 14px;
+    font-weight: 600;
 }
 
-/* INFO BAR */
+/* INFO */
+
 .info {
-    border-top: 2px solid #edf0f3;
-    min-height: 135px;
+    border-top: 1px solid #edf0f3;
+
+    padding: 22px 25px;
+
     display: flex;
     align-items: center;
+
+    gap: 13px;
+
     text-align: left;
-    padding: 25px 45px;
-    gap: 25px;
 }
 
 .info-icon {
     flex-shrink: 0;
-    width: 52px;
-    height: 52px;
+
+    width: 34px;
+    height: 34px;
+
     border-radius: 50%;
-    background: #dce2eb;
-    color: white;
+
+    background: #dce2ea;
+
+    color: #ffffff;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
-    font-weight: bold;
+
+    font-size: 19px;
+    font-weight: 700;
 }
 
 .info-text {
-    color: #7b8798;
-    font-size: 29px;
-    line-height: 1.3;
+    color: #7b8696;
+
+    font-size: 13px;
+    line-height: 1.4;
 }
 
-/* BOTTOM */
-.bottom {
-    margin-top: 55px;
-    color: #8995a7;
+/* FOOTER */
+
+.footer {
+    text-align: center;
+
+    color: #909baa;
+
+    font-size: 12px;
+
+    margin-top: 20px;
 }
 
-.copy {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 65px;
-}
-
-.copy a,
 .footer a {
-    color: #7d899b;
+    color: #7d8795;
     text-decoration: underline;
 }
 
-.footer {
-    font-size: 22px;
-    font-weight: 600;
-}
+/* SMALL PHONES */
 
-/* SUCCESS */
-.success .lock {
-    font-size: 72px;
-}
-
-.success .press-text {
-    color: #16b79f;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
+@media (max-width: 380px) {
 
     body {
-        padding: 35px 10px 30px;
-    }
-
-    .card {
-        border-radius: 43px;
+        padding: 15px 10px 25px;
     }
 
     .content {
-        padding: 85px 20px 55px;
-    }
-
-    .small-title {
-        font-size: 22px;
-        margin-bottom: 38px;
+        padding: 40px 18px 30px;
     }
 
     h1 {
-        font-size: 55px;
-        line-height: 1.08;
-        letter-spacing: -1.5px;
-        margin-bottom: 48px;
+        font-size: 34px;
     }
 
     .description {
-        font-size: 29px;
-        line-height: 1.35;
-        margin-bottom: 55px;
+        font-size: 16px;
     }
 
-    .instruction {
-        font-size: 25px;
-        margin-bottom: 65px;
-    }
-
-    .hold-wrapper {
-        width: 430px;
-        height: 430px;
-        max-width: 78vw;
-        max-height: 78vw;
+    .hold-link {
+        width: 190px;
+        height: 190px;
     }
 
     .lock {
-        font-size: 58px;
+        font-size: 38px;
     }
 
     .press-text {
-        font-size: 25px;
-    }
-
-    .continue-text {
-        font-size: 24px;
-        margin-top: 50px;
-    }
-
-    .info {
-        padding: 25px 35px;
-    }
-
-    .info-text {
-        font-size: 23px;
-    }
-
-    .copy {
-        font-size: 24px;
-        margin-bottom: 55px;
-    }
-
-    .footer {
-        font-size: 19px;
+        font-size: 13px;
     }
 }
 </style>
 </head>
+
 
 <body>
 
@@ -288,7 +275,7 @@ h1 {
             </h1>
 
             <div class="description">
-                This page may contain adult-oriented<br>
+                This page may contain adult-oriented
                 dating content.
             </div>
 
@@ -296,29 +283,41 @@ h1 {
                 Press and hold to verify your age
             </div>
 
-            <div
-                class="hold-wrapper"
-                id="holdWrapper"
-                style="--progress: 0deg;"
-            >
-                <div class="hold-button" id="holdButton">
 
-                    <div class="lock" id="lock">
+            <!--
+                REAL LINK
+
+                Long-pressing this element allows
+                Safari/Chrome to show its native
+                link menu when supported.
+            -->
+
+            <a
+                class="hold-link"
+                href="https://mndvg.hornysspace.com/?utm_source=da57dc555e50572d&ban=snap&j1=1&s1=50252&s2=2278468"
+            >
+
+                <div class="hold-inner">
+
+                    <div class="lock">
                         🔒
                     </div>
 
-                    <div class="press-text" id="pressText">
+                    <div class="press-text">
                         PRESS &amp; HOLD
                     </div>
 
                 </div>
-            </div>
 
-            <div class="continue-text" id="continueText">
+            </a>
+
+
+            <div class="hold-caption">
                 Press and hold to continue
             </div>
 
         </div>
+
 
         <div class="info">
 
@@ -335,190 +334,17 @@ h1 {
 
     </div>
 
-    <div class="bottom">
 
-        <div class="copy">
-            Can't open it?
-            <a href="#" onclick="copyLink(event)">
-                Copy link instead
-            </a>
-        </div>
+    <div class="footer">
 
-        <div class="footer">
-            © 2026.
-            <a href="#">Terms of Service</a>
-            |
-            <a href="#">Privacy Policy</a>
-        </div>
+        © 2026 ·
+        <a href="#">Terms of Service</a>
+        ·
+        <a href="#">Privacy Policy</a>
 
     </div>
 
 </div>
-
-
-<script>
-
-const holdButton = document.getElementById("holdButton");
-const holdWrapper = document.getElementById("holdWrapper");
-const pressText = document.getElementById("pressText");
-const continueText = document.getElementById("continueText");
-const lock = document.getElementById("lock");
-
-let holding = false;
-let startTime = 0;
-let animationFrame = null;
-
-const HOLD_TIME = 1800; // 1.8 seconds
-
-
-function startHold(e) {
-
-    e.preventDefault();
-
-    if (holding) return;
-
-    holding = true;
-    startTime = Date.now();
-
-    pressText.innerHTML = "VERIFYING...";
-    continueText.innerHTML = "Keep holding...";
-
-    animationFrame = requestAnimationFrame(updateProgress);
-}
-
-
-function updateProgress() {
-
-    if (!holding) return;
-
-    const elapsed = Date.now() - startTime;
-
-    let percent = elapsed / HOLD_TIME;
-
-    if (percent > 1) {
-        percent = 1;
-    }
-
-    const degrees = percent * 360;
-
-    holdWrapper.style.setProperty(
-        "--progress",
-        degrees + "deg"
-    );
-
-    if (percent >= 1) {
-
-        finishVerification();
-        return;
-
-    }
-
-    animationFrame = requestAnimationFrame(updateProgress);
-}
-
-
-function stopHold() {
-
-    if (!holding) return;
-
-    holding = false;
-
-    cancelAnimationFrame(animationFrame);
-
-    holdWrapper.style.setProperty(
-        "--progress",
-        "0deg"
-    );
-
-    pressText.innerHTML = "PRESS &amp; HOLD";
-    continueText.innerHTML = "Press and hold to continue";
-}
-
-
-function finishVerification() {
-
-    holding = false;
-
-    cancelAnimationFrame(animationFrame);
-
-    holdWrapper.style.setProperty(
-        "--progress",
-        "360deg"
-    );
-
-    pressText.innerHTML = "VERIFIED ✓";
-    continueText.innerHTML = "Access confirmed";
-
-    lock.innerHTML = "🔓";
-
-    holdButton.classList.add("success");
-
-    /*
-       KETU mund te vendosesh redirect-in
-       pasi te perfundoje verification.
-       
-       Shembull:
-
-       window.location.href = "https://example.com";
-
-       Per momentin nuk ben redirect.
-    */
-}
-
-
-// iPhone / Android
-holdButton.addEventListener(
-    "touchstart",
-    startHold,
-    { passive: false }
-);
-
-holdButton.addEventListener(
-    "touchend",
-    stopHold
-);
-
-holdButton.addEventListener(
-    "touchcancel",
-    stopHold
-);
-
-
-// PC
-holdButton.addEventListener(
-    "mousedown",
-    startHold
-);
-
-document.addEventListener(
-    "mouseup",
-    stopHold
-);
-
-
-// Copy link
-function copyLink(event) {
-
-    event.preventDefault();
-
-    navigator.clipboard.writeText(
-        window.location.href
-    ).then(() => {
-
-        alert("Link copied!");
-
-    }).catch(() => {
-
-        prompt(
-            "Copy this link:",
-            window.location.href
-        );
-
-    });
-
-}
-
-</script>
 
 </body>
 </html>
