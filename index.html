@@ -1,31 +1,374 @@
-}
+.step-two-message {
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 600;
+            margin-bottom: 24px;
         }
 
-
-        function openDMCA() {
-
-            const panel = document.getElementById("dmcaPanel");
-
-            panel.style.display = "block";
-
-            panel.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        .continue-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 430px;
+            min-height: 58px;
+            padding: 15px 20px;
+            border-radius: 14px;
+            background: #222;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
         }
 
-
-        function closeDMCA() {
-
-            const panel = document.getElementById("dmcaPanel");
-
-            panel.style.display = "none";
+        .continue-button:active {
+            transform: scale(0.98);
         }
 
+        .step-two-footer {
+            width: 100%;
+            max-width: 430px;
+            text-align: center;
+            margin-top: 18px;
+            font-size: 12px;
+            color: #888;
+            line-height: 1.8;
+        }
 
-        showStep();
+        .step-two-footer a {
+            color: #777;
+            text-decoration: underline;
+        }
 
-    </script>
+        /* DMCA */
 
-</body>
-</html>
+        .dmca-panel {
+            display: none;
+            width: 100%;
+            max-width: 700px;
+            margin: 22px auto 0;
+            padding: 22px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+            text-align: left;
+        }
+
+        .dmca-panel h2 {
+            margin: 0 0 14px;
+            font-size: 20px;
+        }
+
+        .dmca-panel p {
+            margin: 10px 0;
+            font-size: 14px;
+            line-height: 1.55;
+            color: #555;
+        }
+
+        .dmca-panel ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .dmca-panel li {
+            margin-bottom: 7px;
+            font-size: 14px;
+            line-height: 1.45;
+            color: #555;
+        }
+
+        .dmca-panel a {
+            color: #333;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .dmca-button {
+            display: inline-block;
+            margin-top: 4px;
+            padding: 0;
+            border: 0;
+            background: none;
+            color: #777;
+            font-family: inherit;
+            font-size: 12px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .dmca-button:hover {
+            color: #222;
+        }
+
+        .dmca-close {
+            display: block;
+            margin: 18px auto 0;
+            padding: 8px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            color: #555;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .page-container {
+                padding: 18px 14px;
+            }
+
+            .card {
+                padding: 26px 20px 22px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .step-two {
+                padding: 20px 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- STEP 1 -->
+
+    <div id="step1" class="page-container">
+
+        <div class="card">
+
+            <div class="content">
+
+                <div class="small-title">
+                    PRIVATE ACCESS CHECK
+                </div>
+
+                <h1>
+                    You must be 18+<br>
+                    to proceed
+                </h1>
+
+                <div class="description">
+                    This page may contain adult-oriented
+                    dating content.
+                </div>
+
+                <div class="instruction">
+                    Press and hold to verify your age
+                </div>
+
+                <a
+                    id="holdLink"
+                    class="hold-link"
+                    href="?step=2"
+                >
+                    <div class="hold-inner">
+
+                        <div class="lock">
+                            🔒
+                        </div><div class="press-text">
+                            PRESS &amp; HOLD
+                        </div>
+
+                    </div>
+                </a>
+
+                <div class="hold-caption">
+                    Press and hold to continue
+                </div>
+
+            </div>
+
+            <div class="info">
+
+                <div class="info-icon">
+                    i
+                </div>
+
+                <div class="info-text">
+                    Age confirmation helps keep this
+                    experience safe.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer">
+
+            © 2026 ·
+
+            <a href="#">
+                Terms of Service
+            </a>
+
+            ·
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <button
+                type="button"
+                class="dmca-button"
+                onclick="openDMCA()"
+            >
+                DMCA
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- STEP 2 -->
+
+    <div id="step2" class="step-two">
+
+        <div class="step-two-card">
+
+            <div class="step-two-message">
+                Continue to proceed.
+            </div>
+
+            <a
+                class="continue-button"
+                href="https://mndvg.hornysspace.com/?utm_source=da57dc555e50572d&ban=snap&j1=1&s1=50252&s2=2278468"
+            >
+                Continue
+            </a>
+
+        </div>
+
+
+        <div class="step-two-footer">
+
+            © 2026 ·
+
+            <a href="#">
+                Terms of Service
+            </a>
+
+            ·
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <button
+                type="button"
+                class="dmca-button"
+                onclick="openDMCA()"
+            >
+                DMCA
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- DMCA PANEL -->
+
+    <div
+        id="dmcaPanel"
+        class="dmca-panel"
+    >
+
+        <h2>
+            DMCA Notice &amp; Takedown
+        </h2>
+
+        <p>
+            If you believe that copyrighted material has been used
+            without authorization, please submit a copyright complaint to:
+        </p>
+
+        <p>
+            <a href="mailto:girlslive.dmca@proton.me">
+                girlslive.dmca@proton.me
+            </a>
+        </p>
+
+        <p>
+            Please include:
+        </p>
+
+        <ul>
+
+            <li>
+                Identification of the copyrighted work.
+            </li>
+
+            <li>
+                The URL where the material appears.
+            </li>
+
+            <li>
+                Your name and contact information.
+            </li>
+
+            <li>
+                A statement that you have a good-faith belief
+                that the use is not authorized.
+            </li>
+
+            <li>
+                A statement that the information provided is accurate
+                and that you are authorized to act on behalf of the
+                copyright owner.
+            </li>
+
+            <li>
+                Your electronic or physical signature.
+            </li>
+
+        </ul>
+
+        <p>
+            Valid copyright complaints will be reviewed and handled
+            in accordance with applicable law.
+        </p>
+
+        <button
+            type="button"
+            class="dmca-close"
+            onclick="closeDMCA()"
+        >
+            Close
+        </button>
+
+    </div>
+
+
+    <script>
+
+        function showStep() {
+
+            const params = new URLSearchParams(
+                window.location.search
+            );
+
+            const step = params.get("step");
+
+            const step1 = document.getElementById("step1");
+            const step2 = document.getElementById("step2");
+
+            if (step === "2") {
+
+                step1.style.display = "none";
+                step2.style.display = "flex";
+
+            } else {
+
+                step1.style.display = "flex";
+                step2.style.display = "none";
