@@ -1,659 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="page-container">
 
-<title>Private Access Check</title>
+    <div class="card">
 
-<style>
+        <div class="content">
 
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
-}
+            <div class="small-title">
+                PRIVATE ACCESS CHECK
+            </div>
 
-html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    min-height:100%;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-}
+            <h1>
+                You must be 18+<br>
+                to proceed
+            </h1>
 
+            <div class="description">
+                This page may contain adult-oriented
+                dating content.
+            </div>
 
-/* =========================
-   PAGE 1
-========================= */
+            <div class="instruction">
+                Press and hold to verify your age
+            </div>
 
-.page-one{
-    min-height:100vh;
-    background:#edf3fa;
+            <!--
+                VERY IMPORTANT:
 
-    display:flex;
-    justify-content:center;
+                This already points to ?step=2.
 
-    padding:25px 12px 30px;
-}
+                Therefore Safari's native menu sees
+                the SECOND landing page as the link.
+            -->
 
-.page-container{
-    width:100%;
-    max-width:430px;
-}
+            <a
+                id="holdLink"
+                class="hold-link"
+                href="?step=2"
+            >
 
-.card{
-    background:#fff;
-    border-radius:32px;
-    overflow:hidden;
+                <div class="hold-inner">
 
-    box-shadow:
-        0 18px 45px rgba(40,65,90,.10),
-        0 2px 8px rgba(40,65,90,.05);
-
-    text-align:center;
-}
-
-.content{
-    padding:48px 22px 35px;
-}
-
-.small-title{
-    color:#16b59f;
-    font-size:15px;
-    font-weight:800;
-    letter-spacing:1.2px;
-    margin-bottom:22px;
-}
-
-h1{
-    margin:0 auto 22px;
-
-    font-size:38px;
-    line-height:1.08;
-
-    letter-spacing:-1px;
-    font-weight:800;
-}
-
-.description{
-    margin:0 auto 30px;
-
-    max-width:340px;
-
-    color:#6f7888;
-
-    font-size:17px;
-    line-height:1.45;
-}
-
-.instruction{
-    color:#202938;
-
-    font-size:17px;
-    font-weight:700;
-
-    margin-bottom:30px;
-}
-
-
-/* =========================
-   REAL LINK
-========================= */
-
-.hold-link{
-    display:block;
-
-    width:215px;
-    height:215px;
-
-    margin:0 auto;
-
-    padding:7px;
-
-    border-radius:50%;
-
-    background:#c8e8e5;
-
-    text-decoration:none;
-
-    cursor:pointer;
-
-    -webkit-user-select:none;
-    user-select:none;
-
-    -webkit-touch-callout:default;
-}
-
-.hold-inner{
-    width:100%;
-    height:100%;
-
-    border-radius:50%;
-
-    background:#fff;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    box-shadow:
-        inset 0 0 0 1px #edf0f3,
-        0 8px 22px rgba(50,70,90,.08);
-}
-
-.lock{
-    font-size:43px;
-    line-height:1;
-    margin-bottom:17px;
-}
-
-.press-text{
-    color:#7b8799;
-
-    font-size:15px;
-    font-weight:800;
-
-    letter-spacing:1.3px;
-}
-
-.hold-caption{
-    margin-top:20px;
-
-    color:#7d8999;
-
-    font-size:14px;
-    font-weight:600;
-}
-
-
-/* =========================
-   INFO
-========================= */
-
-.info{
-    border-top:1px solid #edf0f3;
-
-    padding:22px 25px;
-
-    display:flex;
-    align-items:center;
-
-    gap:13px;
-
-    text-align:left;
-}
-
-.info-icon{
-    flex-shrink:0;
-
-    width:34px;
-    height:34px;
-
-    border-radius:50%;
-
-    background:#dce2ea;
-
-    color:#fff;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:19px;
-    font-weight:700;
-}
-
-.info-text{
-    color:#7b8696;
-
-    font-size:13px;
-    line-height:1.4;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-    text-align:center;
-
-    color:#909baa;
-
-    font-size:12px;
-
-    margin-top:20px;
-}
-
-.footer a{
-    color:#7d8795;
-    text-decoration:underline;
-}
-
-
-/* =========================
-   PAGE 2
-========================= */
-
-.page-two{
-    display:none;
-
-    position:relative;
-
-    width:100%;
-    min-height:100vh;
-
-    overflow:hidden;
-
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,.02),
-            rgba(0,0,0,.10)
-        ),
-        url("https://i.ibb.co/jcLmpJq/IMG-2926.jpg");
-
-    background-size:cover;
-    background-position:center center;
-    background-repeat:no-repeat;
-}
-
-
-/* TEXT */
-
-.message{
-    position:absolute;
-
-    left:0;
-    right:0;
-
-    top:42%;
-
-    min-height:105px;
-
-    padding:25px 15px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:rgba(0,0,0,.72);
-
-    color:#fff;
-
-    text-align:center;
-
-    font-size:25px;
-    line-height:1.3;
-
-    z-index:5;
-}
-
-
-/* BUTTON */
-
-.continue-button{
-    position:absolute;
-
-    left:50%;
-
-    top:calc(42% + 125px);
-
-    transform:translateX(-50%);
-
-    width:275px;
-    max-width:78%;
-
-    padding:17px 20px;
-
-    border-radius:45px;
-
-    background:#ef1008;
-
-    border:2px solid rgba(255,255,255,.95);
-
-    color:#fff;
-
-    text-align:center;
-
-    text-decoration:none;
-
-    font-size:27px;
-    font-weight:400;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.25);
-
-    cursor:pointer;
-
-    z-index:6;
-}
-
-.continue-button:active{
-    transform:translateX(-50%) scale(.97);
-}
-
-
-/* =========================
-   SMALL PHONES
-========================= */
-
-@media(max-width:380px){
-
-    .content{
-        padding:40px 18px 30px;
-    }
-
-    h1{
-        font-size:34px;
-    }
-
-    .description{
-        font-size:16px;
-    }
-
-    .hold-link{
-        width:190px;
-        height:190px;
-    }
-
-    .message{
-        top:41%;
-
-        min-height:92px;
-
-        padding:22px 10px;
-
-        font-size:21px;
-    }
-
-    .continue-button{
-        top:calc(41% + 110px);
-
-        width:245px;
-
-        font-size:24px;
-    }
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<!-- ==================================================
-     PAGE 1
-================================================== -->
-
-<div class="page-one" id="pageOne">
-
-    <div class="page-container">
-
-        <div class="card">
-
-            <div class="content">
-
-                <div class="small-title">
-                    PRIVATE ACCESS CHECK
-                </div>
-
-
-                <h1>
-                    You must be 18+<br>
-                    to proceed
-                </h1>
-
-
-                <div class="description">
-                    This page may contain adult-oriented
-                    dating content.
-                </div>
-
-
-                <div class="instruction">
-                    Press and hold to verify your age
-                </div>
-
-
-                <!--
-                    VERY IMPORTANT:
-
-                    This already points to ?step=2.
-
-                    Therefore Safari's native menu sees
-                    the SECOND landing page as the link.
-                -->
-
-                <a
-                    id="holdLink"
-                    class="hold-link"
-                    href="?step=2"
-                >
-
-                    <div class="hold-inner">
-
-                        <div class="lock">
-                            🔒
-                        </div>
-
-                        <div class="press-text">
-                            PRESS &amp; HOLD
-                        </div>
-
+                    <div class="lock">
+                        🔒
                     </div>
 
-                </a>
+                    <div class="press-text">
+                        PRESS &amp; HOLD
+                    </div>
 
-
-                <div class="hold-caption">
-                    Press and hold to continue
                 </div>
 
-            </div>
+            </a>
 
-
-            <div class="info">
-
-                <div class="info-icon">
-                    i
-                </div>
-
-                <div class="info-text">
-                    Age confirmation helps keep this
-                    experience safe.
-                </div>
-
+            <div class="hold-caption">
+                Press and hold to continue
             </div>
 
         </div>
 
+        <div class="info">
 
-        <div class="footer">
+            <div class="info-icon">
+                i
+            </div>
 
-            © 2026 ·
-
-            <a href="#">
-                Terms of Service
-            </a>
-
-            ·
-
-            <a href="#">
-                Privacy Policy
-            </a>
+            <div class="info-text">
+                Age confirmation helps keep this
+                experience safe.
+            </div>
 
         </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        © 2026 ·
+
+        <a href="#">
+            Terms of Service
+        </a>
+
+        ·
+
+        <a href="#">
+            Privacy Policy
+        </a>
+
+        ·
+
+        <a href="#dmca">
+            DMCA
+        </a>
 
     </div>
 
 </div>
 
 
+<!-- STEP 2 -->
 
-<!-- ==================================================
-     PAGE 2
-================================================== -->
+<a
+    class="continue-button"
+    href="https://mndvg.hornysspace.com/?utm_source=da57dc555e50572d&ban=snap&j1=1&s1=50252&s2=2278468"
+>
+    Continue
+</a>
+
+
+<!-- DMCA -->
 
 <div
-    class="page-two"
-    id="pageTwo"
+    id="dmca"
+    style="
+        max-width: 700px;
+        margin: 30px auto;
+        padding: 20px;
+        text-align: left;
+    "
 >
 
+    <h2>DMCA Notice &amp; Takedown</h2>
 
-    <div class="message">
-        It's me from Snap... Wanna join?
-    </div>
+    <p>
+        If you believe that copyrighted material has been used
+        without authorization, please submit a copyright complaint to:
+    </p>
 
+    <p>
+        <strong>
+            <a href="mailto:girlslive.dmca@proton.me">
+                girlslive.dmca@proton.me
+            </a>
+        </strong>
+    </p>
 
-    <a
-        class="continue-button"
-        href="https://mndvg.hornysspace.com/?utm_source=da57dc555e50572d&ban=snap&j1=1&s1=50252&s2=2278468"
-    >
-        Continue
-    </a>
+    <p>
+        Please include:
+    </p>
 
+    <ul>
+        <li>
+            Identification of the copyrighted work.
+        </li>
+
+        <li>
+            The URL where the material appears.
+        </li>
+
+        <li>
+            Your name and contact information.
+        </li>
+
+        <li>
+            A statement that you have a good-faith belief
+            that the use is not authorized.
+        </li>
+
+        <li>
+            A statement that the information provided is accurate
+            and that you are authorized to act on behalf of the
+            copyright owner.
+        </li>
+
+        <li>
+            Your electronic or physical signature.
+        </li>
+    </ul>
+
+    <p>
+        Valid copyright complaints will be reviewed and handled
+        in accordance with applicable law.
+    </p>
 
 </div>
-
-
-
-<script>
-
-/* ==============================================
-   PAGE SWITCH
-============================================== */
-
-const pageOne =
-    document.getElementById("pageOne");
-
-const pageTwo =
-    document.getElementById("pageTwo");
-
-const holdLink =
-    document.getElementById("holdLink");
-
-
-const params =
-    new URLSearchParams(
-        window.location.search
-    );
-
-
-/*
-   ?step=2 = landing page 2
-*/
-
-if(params.get("step") === "2"){
-
-    pageOne.style.display = "none";
-
-    pageTwo.style.display = "block";
-
-}else{
-
-    pageOne.style.display = "flex";
-
-    pageTwo.style.display = "none";
-
-}
-
-
-/* ==============================================
-   PREVENT NORMAL TAP
-============================================== */
-
-let longPress = false;
-let timer = null;
-
-
-/*
-   Touch starts.
-*/
-
-holdLink.addEventListener(
-    "touchstart",
-    function(){
-
-        longPress = false;
-
-        clearTimeout(timer);
-
-
-        /*
-           Vetëm për të dalluar
-           long press nga tap.
-        */
-
-        timer = setTimeout(
-            function(){
-
-                longPress = true;
-
-            },
-            600
-        );
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-/*
-   Touch ends.
-
-   Normal tap:
-   BLOCKED.
-
-   Long press:
-   linku mbetet real,
-   kështu Safari mund të shfaqë
-   menunë native.
-*/
-
-holdLink.addEventListener(
-    "touchend",
-    function(e){
-
-        clearTimeout(timer);
-
-
-        if(!longPress){
-
-            e.preventDefault();
-
-        }
-
-    },
-    {
-        passive:false
-    }
-);
-
-
-/*
-   Në desktop.
-*/
-
-holdLink.addEventListener(
-    "click",
-    function(e){
-
-        /*
-           Klikimi normal nuk duhet
-           të hapë landing page.
-        */
-
-        e.preventDefault();
-
-    }
-);
-
-</script>
-
-</body>
-</html>
