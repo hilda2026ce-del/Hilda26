@@ -1,176 +1,31 @@
-<div class="page-container">
-
-    <div class="card">
-
-        <div class="content">
-
-            <div class="small-title">
-                PRIVATE ACCESS CHECK
-            </div>
-
-            <h1>
-                You must be 18+<br>
-                to proceed
-            </h1>
-
-            <div class="description">
-                This page may contain adult-oriented
-                dating content.
-            </div>
-
-            <div class="instruction">
-                Press and hold to verify your age
-            </div>
-
-            <!--
-                VERY IMPORTANT:
-
-                This already points to ?step=2.
-
-                Therefore Safari's native menu sees
-                the SECOND landing page as the link.
-            -->
-
-            <a
-                id="holdLink"
-                class="hold-link"
-                href="?step=2"
-            >
-
-                <div class="hold-inner">
-
-                    <div class="lock">
-                        🔒
-                    </div>
-
-                    <div class="press-text">
-                        PRESS &amp; HOLD
-                    </div>
-
-                </div>
-
-            </a>
-
-            <div class="hold-caption">
-                Press and hold to continue
-            </div>
-
-        </div>
-
-        <div class="info">
-
-            <div class="info-icon">
-                i
-            </div>
-
-            <div class="info-text">
-                Age confirmation helps keep this
-                experience safe.
-            </div>
-
-        </div>
-
-    </div>
+}
+        }
 
 
-    <div class="footer">
+        function openDMCA() {
 
-        © 2026 ·
+            const panel = document.getElementById("dmcaPanel");
 
-        <a href="#">
-            Terms of Service
-        </a>
+            panel.style.display = "block";
 
-        ·
-
-        <a href="#">
-            Privacy Policy
-        </a>
-
-        ·
-
-        <a href="#dmca">
-            DMCA
-        </a>
-
-    </div>
-
-</div>
+            panel.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
 
 
-<!-- STEP 2 -->
+        function closeDMCA() {
 
-<a
-    class="continue-button"
-    href="https://mndvg.hornysspace.com/?utm_source=da57dc555e50572d&ban=snap&j1=1&s1=50252&s2=2278468"
->
-    Continue
-</a>
+            const panel = document.getElementById("dmcaPanel");
+
+            panel.style.display = "none";
+        }
 
 
-<!-- DMCA -->
+        showStep();
 
-<div
-    id="dmca"
-    style="
-        max-width: 700px;
-        margin: 30px auto;
-        padding: 20px;
-        text-align: left;
-    "
->
+    </script>
 
-    <h2>DMCA Notice &amp; Takedown</h2>
-
-    <p>
-        If you believe that copyrighted material has been used
-        without authorization, please submit a copyright complaint to:
-    </p>
-
-    <p>
-        <strong>
-            <a href="mailto:girlslive.dmca@proton.me">
-                girlslive.dmca@proton.me
-            </a>
-        </strong>
-    </p>
-
-    <p>
-        Please include:
-    </p>
-
-    <ul>
-        <li>
-            Identification of the copyrighted work.
-        </li>
-
-        <li>
-            The URL where the material appears.
-        </li>
-
-        <li>
-            Your name and contact information.
-        </li>
-
-        <li>
-            A statement that you have a good-faith belief
-            that the use is not authorized.
-        </li>
-
-        <li>
-            A statement that the information provided is accurate
-            and that you are authorized to act on behalf of the
-            copyright owner.
-        </li>
-
-        <li>
-            Your electronic or physical signature.
-        </li>
-    </ul>
-
-    <p>
-        Valid copyright complaints will be reviewed and handled
-        in accordance with applicable law.
-    </p>
-
-</div>
+</body>
+</html>
