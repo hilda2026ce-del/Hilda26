@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0,
-               user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Private Access Check</title>
 
@@ -16,24 +13,18 @@
     -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
     margin:0;
     padding:0;
     width:100%;
     min-height:100%;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
 
-/* =====================================================
+/* =========================
    PAGE 1
-===================================================== */
+========================= */
 
 .page-one{
     min-height:100vh;
@@ -51,7 +42,7 @@ body{
 }
 
 .card{
-    background:#ffffff;
+    background:#fff;
     border-radius:32px;
     overflow:hidden;
 
@@ -68,12 +59,9 @@ body{
 
 .small-title{
     color:#16b59f;
-
     font-size:15px;
     font-weight:800;
-
     letter-spacing:1.2px;
-
     margin-bottom:22px;
 }
 
@@ -108,9 +96,9 @@ h1{
 }
 
 
-/* =====================================================
-   HOLD LINK
-===================================================== */
+/* =========================
+   REAL LINK
+========================= */
 
 .hold-link{
     display:block;
@@ -133,11 +121,7 @@ h1{
     -webkit-user-select:none;
     user-select:none;
 
-    /*
-       Mos lejohet tap-i normal
-       deri sa JavaScript ta aktivizoje.
-    */
-    touch-action:manipulation;
+    -webkit-touch-callout:default;
 }
 
 .hold-inner{
@@ -146,7 +130,7 @@ h1{
 
     border-radius:50%;
 
-    background:#ffffff;
+    background:#fff;
 
     display:flex;
     flex-direction:column;
@@ -161,7 +145,6 @@ h1{
 .lock{
     font-size:43px;
     line-height:1;
-
     margin-bottom:17px;
 }
 
@@ -184,9 +167,9 @@ h1{
 }
 
 
-/* =====================================================
+/* =========================
    INFO
-===================================================== */
+========================= */
 
 .info{
     border-top:1px solid #edf0f3;
@@ -211,7 +194,7 @@ h1{
 
     background:#dce2ea;
 
-    color:#ffffff;
+    color:#fff;
 
     display:flex;
     align-items:center;
@@ -229,9 +212,9 @@ h1{
 }
 
 
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 .footer{
     text-align:center;
@@ -249,9 +232,9 @@ h1{
 }
 
 
-/* =====================================================
+/* =========================
    PAGE 2
-===================================================== */
+========================= */
 
 .page-two{
     display:none;
@@ -277,7 +260,7 @@ h1{
 }
 
 
-/* TEXT BAR */
+/* TEXT */
 
 .message{
     position:absolute;
@@ -297,7 +280,7 @@ h1{
 
     background:rgba(0,0,0,.72);
 
-    color:#ffffff;
+    color:#fff;
 
     text-align:center;
 
@@ -308,7 +291,7 @@ h1{
 }
 
 
-/* CONTINUE BUTTON */
+/* BUTTON */
 
 .continue-button{
     position:absolute;
@@ -330,7 +313,7 @@ h1{
 
     border:2px solid rgba(255,255,255,.95);
 
-    color:#ffffff;
+    color:#fff;
 
     text-align:center;
 
@@ -352,9 +335,9 @@ h1{
 }
 
 
-/* =====================================================
+/* =========================
    SMALL PHONES
-===================================================== */
+========================= */
 
 @media(max-width:380px){
 
@@ -401,9 +384,9 @@ h1{
 <body>
 
 
-<!-- =====================================================
+<!-- ==================================================
      PAGE 1
-===================================================== -->
+================================================== -->
 
 <div class="page-one" id="pageOne">
 
@@ -436,16 +419,18 @@ h1{
 
 
                 <!--
-                    REAL LINK
+                    VERY IMPORTANT:
 
-                    Fillimisht href nuk eshte aktiv.
-                    Aktivizohet vetem pas long-press.
+                    This already points to ?step=2.
+
+                    Therefore Safari's native menu sees
+                    the SECOND landing page as the link.
                 -->
 
                 <a
                     id="holdLink"
                     class="hold-link"
-                    href="#"
+                    href="?step=2"
                 >
 
                     <div class="hold-inner">
@@ -463,10 +448,7 @@ h1{
                 </a>
 
 
-                <div
-                    class="hold-caption"
-                    id="holdCaption"
-                >
+                <div class="hold-caption">
                     Press and hold to continue
                 </div>
 
@@ -492,10 +474,13 @@ h1{
         <div class="footer">
 
             © 2026 ·
+
             <a href="#">
                 Terms of Service
             </a>
+
             ·
+
             <a href="#">
                 Privacy Policy
             </a>
@@ -508,9 +493,9 @@ h1{
 
 
 
-<!-- =====================================================
+<!-- ==================================================
      PAGE 2
-===================================================== -->
+================================================== -->
 
 <div
     class="page-two"
@@ -537,122 +522,78 @@ h1{
 
 <script>
 
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-const FINAL_LINK =
-"https://mndvg.hornysspace.com/?utm_source=da57dc555e50572d&ban=snap&j1=1&s1=50252&s2=2278468";
-
-
-const HOLD_TIME = 700;
-
-
-/* =====================================================
-   ELEMENTS
-===================================================== */
-
-const holdLink =
-document.getElementById("holdLink");
-
-const pressText =
-holdLink.querySelector(".press-text");
-
-const lock =
-holdLink.querySelector(".lock");
-
-const holdCaption =
-document.getElementById("holdCaption");
+/* ==============================================
+   PAGE SWITCH
+============================================== */
 
 const pageOne =
-document.getElementById("pageOne");
+    document.getElementById("pageOne");
 
 const pageTwo =
-document.getElementById("pageTwo");
+    document.getElementById("pageTwo");
 
+const holdLink =
+    document.getElementById("holdLink");
 
-/* =====================================================
-   CHECK PAGE
-===================================================== */
 
 const params =
-new URLSearchParams(
-    window.location.search
-);
+    new URLSearchParams(
+        window.location.search
+    );
 
+
+/*
+   ?step=2 = landing page 2
+*/
 
 if(params.get("step") === "2"){
 
     pageOne.style.display = "none";
+
     pageTwo.style.display = "block";
 
 }else{
 
     pageOne.style.display = "flex";
+
     pageTwo.style.display = "none";
 
 }
 
 
-/* =====================================================
-   LONG PRESS
-===================================================== */
+/* ==============================================
+   PREVENT NORMAL TAP
+============================================== */
 
-let holdTimer = null;
-
-let longPressActivated = false;
-
-let touching = false;
+let longPress = false;
+let timer = null;
 
 
 /*
-   Kur prek normalisht:
-
-   - nuk hapet linku
-   - fillon timeri
-
-   Kur mbahet:
-
-   - pas 700ms aktivizohet linku
+   Touch starts.
 */
-
 
 holdLink.addEventListener(
     "touchstart",
     function(){
 
-        touching = true;
+        longPress = false;
 
-        longPressActivated = false;
-
-        clearTimeout(holdTimer);
+        clearTimeout(timer);
 
 
-        holdTimer = setTimeout(
+        /*
+           Vetëm për të dalluar
+           long press nga tap.
+        */
+
+        timer = setTimeout(
             function(){
 
-                longPressActivated = true;
-
-
-                /*
-                   Tani linku real aktivizohet.
-                */
-
-                holdLink.href =
-                    "?step=2";
-
-
-                pressText.textContent =
-                    "VERIFIED ✓";
-
-                lock.textContent =
-                    "🔓";
-
-                holdCaption.textContent =
-                    "Release or choose an option";
+                longPress = true;
 
             },
-            HOLD_TIME
+            600
         );
 
     },
@@ -662,31 +603,30 @@ holdLink.addEventListener(
 );
 
 
-/* =====================================================
-   TOUCH END
-===================================================== */
+/*
+   Touch ends.
+
+   Normal tap:
+   BLOCKED.
+
+   Long press:
+   linku mbetet real,
+   kështu Safari mund të shfaqë
+   menunë native.
+*/
 
 holdLink.addEventListener(
     "touchend",
     function(e){
 
-        clearTimeout(holdTimer);
+        clearTimeout(timer);
 
 
-        /*
-           Nëse nuk u mbajt mjaftueshëm,
-           mos lejo navigimin.
-        */
-
-        if(!longPressActivated){
+        if(!longPress){
 
             e.preventDefault();
 
-            holdLink.href = "#";
-
         }
-
-        touching = false;
 
     },
     {
@@ -695,44 +635,20 @@ holdLink.addEventListener(
 );
 
 
-/* =====================================================
-   TOUCH CANCEL
-===================================================== */
-
-holdLink.addEventListener(
-    "touchcancel",
-    function(){
-
-        clearTimeout(holdTimer);
-
-        longPressActivated = false;
-
-        touching = false;
-
-        holdLink.href = "#";
-
-    }
-);
-
-
-/* =====================================================
-   CLICK PROTECTION
-===================================================== */
+/*
+   Në desktop.
+*/
 
 holdLink.addEventListener(
     "click",
     function(e){
 
         /*
-           Tap normal = asgjë.
+           Klikimi normal nuk duhet
+           të hapë landing page.
         */
 
-        if(!longPressActivated){
-
-            e.preventDefault();
-
-            return false;
-        }
+        e.preventDefault();
 
     }
 );
