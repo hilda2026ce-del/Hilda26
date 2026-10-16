@@ -39,7 +39,7 @@
         .card {
             width: 100%;
             max-width: 430px;
-            background: #ffffff;
+            background: #fff;
             border-radius: 18px;
             padding: 30px 24px 24px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
@@ -182,13 +182,28 @@
             width: 100%;
             max-width: 430px;
             text-align: center;
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-two-image {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            max-height: 420px;
+            object-fit: cover;
+            margin: 0 auto 22px;
+            border-radius: 14px;
         }
 
         .step-two-message {
-            font-size: 20px;
-            line-height: 1.4;
+            font-size: 19px;
+            line-height: 1.5;
             font-weight: 600;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
+            overflow-wrap: anywhere;
         }
 
         .continue-button {
@@ -196,7 +211,6 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 430px;
             min-height: 58px;
             padding: 15px 20px;
             border-radius: 14px;
@@ -205,6 +219,8 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: 700;
+            border: none;
+            cursor: pointer;
         }
 
         .continue-button:active {
@@ -230,7 +246,7 @@
 
         .dmca-panel {
             display: none;
-            width: 100%;
+            width: calc(100% - 36px);
             max-width: 700px;
             margin: 22px auto 0;
             padding: 22px;
@@ -315,6 +331,10 @@
             .step-two {
                 padding: 20px 14px;
             }
+
+            .step-two-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -394,8 +414,16 @@
 
     <div id="step2" class="step-two">
         <div class="step-two-card">
+
+            <img
+                class="step-two-image"
+                src="https://i.ibb.co/wZ6ST3QF/IMG-7155.jpg"
+                alt="Photo"
+            >
+
             <div class="step-two-message">
-                Continue to proceed.
+                It’s me from Snap… come chat 💬 with me !<br>
+                Sign up &amp; Confirm Email 📧
             </div>
 
             <a
@@ -404,6 +432,7 @@
             >
                 Continue
             </a>
+
         </div>
 
         <div class="step-two-footer">
@@ -502,16 +531,19 @@
         }
 
         function closeDMCA() {
-            const panel = document.getElementById("dmcaPanel");
-            panel.style.display = "none";
+            document.getElementById("dmcaPanel").style.display = "none";
         }
 
         /*
-         * The hold link is intentionally left as a normal link.
-         * Safari controls its native long-press menu.
-         * A webpage cannot force Safari to show a specific menu
-         * or guarantee an "Open in Browser" option.
+         * Prevent ordinary clicks from navigating to Step 2.
+         * Leave the link native so Safari can offer its own
+         * long-press context menu where supported.
          */
+        const holdLink = document.getElementById("holdLink");
+
+        holdLink.addEventListener("click", function (event) {
+            event.preventDefault();
+        });
 
         showStep();
     </script>
