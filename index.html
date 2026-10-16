@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,6 +85,10 @@
             text-decoration: none;
             color: inherit;
             margin-top: 14px;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            touch-action: none;
         }
 
         .hold-inner {
@@ -99,7 +104,7 @@
             transition: transform 0.15s ease, opacity 0.15s ease;
         }
 
-        .hold-inner:active {
+        .hold-link:active .hold-inner {
             transform: scale(0.98);
             opacity: 0.9;
         }
@@ -349,17 +354,13 @@
                     id="holdLink"
                     class="hold-link"
                     href="?step=2"
+                    draggable="false"
                 >
                     <div class="hold-inner">
-
-                        <div class="lock">
-                            🔒
-                        </div>
-
+                        <div class="lock">🔒</div>
                         <div class="press-text">
                             PRESS &amp; HOLD
                         </div>
-
                     </div>
                 </a>
 
@@ -371,9 +372,7 @@
 
             <div class="info">
 
-                <div class="info-icon">
-                    i
-                </div>
+                <div class="info-icon">i</div>
 
                 <div class="info-text">
                     Age confirmation helps keep this
@@ -384,20 +383,15 @@
 
         </div>
 
-
         <div class="footer">
 
             © 2026 ·
 
-            <a href="#">
-                Terms of Service
-            </a>
+            <a href="#">Terms of Service</a>
 
             ·
 
-            <a href="#">
-                Privacy Policy
-            </a>
+            <a href="#">Privacy Policy</a>
 
             ·
 
@@ -433,20 +427,15 @@
 
         </div>
 
-
         <div class="step-two-footer">
 
             © 2026 ·
 
-            <a href="#">
-                Terms of Service
-            </a>
+            <a href="#">Terms of Service</a>
 
             ·
 
-            <a href="#">
-                Privacy Policy
-            </a>
+            <a href="#">Privacy Policy</a>
 
             ·
 
@@ -465,14 +454,9 @@
 
     <!-- DMCA PANEL -->
 
-    <div
-        id="dmcaPanel"
-        class="dmca-panel"
-    >
+    <div id="dmcaPanel" class="dmca-panel">
 
-        <h2>
-            DMCA Notice &amp; Takedown
-        </h2>
+        <h2>DMCA Notice &amp; Takedown</h2>
 
         <p>
             If you believe that copyrighted material has been used
@@ -485,39 +469,22 @@
             </a>
         </p>
 
-        <p>
-            Please include:
-        </p>
+        <p>Please include:</p>
 
         <ul>
-
-            <li>
-                Identification of the copyrighted work.
-            </li>
-
-            <li>
-                The URL where the material appears.
-            </li>
-
-            <li>
-                Your name and contact information.
-            </li>
-
+            <li>Identification of the copyrighted work.</li>
+            <li>The URL where the material appears.</li>
+            <li>Your name and contact information.</li>
             <li>
                 A statement that you have a good-faith belief
                 that the use is not authorized.
             </li>
-
             <li>
                 A statement that the information provided is accurate
                 and that you are authorized to act on behalf of the
                 copyright owner.
             </li>
-
-            <li>
-                Your electronic or physical signature.
-            </li>
-
+            <li>Your electronic or physical signature.</li>
         </ul>
 
         <p>
@@ -582,6 +549,70 @@
 
             panel.style.display = "none";
         }
+
+
+        /* PRESS AND HOLD FOR 1 SECOND */
+
+        const holdLink = document.getElementById("holdLink");
+
+        let holdTimer = null;
+        let activated = false;
+
+        function startHold(event) {
+
+            if (
+                event.type === "mousedown" &&
+                event.button !== 0
+            ) {
+                return;
+            }
+
+            if (holdTimer !== null || activated) {
+                return;
+            }
+
+            holdTimer = setTimeout(function () {
+
+                activated = true;
+                holdTimer = null;
+
+                window.location.href = "?step=2";
+
+            }, 1000);
+        }
+
+
+        function cancelHold() {
+
+            if (holdTimer !== null) {
+
+                clearTimeout(holdTimer);
+                holdTimer = null;
+
+            }
+        }
+
+
+        holdLink.addEventListener(
+            "touchstart",
+            startHold,
+            { passive: true }
+        );
+
+        holdLink.addEventListener("touchend", cancelHold);
+        holdLink.addEventListener("touchcancel", cancelHold);
+
+        holdLink.addEventListener("mousedown", startHold);
+        holdLink.addEventListener("mouseup", cancelHold);
+        holdLink.addEventListener("mouseleave", cancelHold);
+
+        holdLink.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
+
+        holdLink.addEventListener("click", function (event) {
+            event.preventDefault();
+        });
 
 
         showStep();
