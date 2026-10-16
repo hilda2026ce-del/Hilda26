@@ -3,10 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Private Access</title>
 
@@ -327,9 +324,7 @@
     <!-- STEP 1 -->
 
     <div id="step1" class="page-container">
-
         <div class="card">
-
             <div class="content">
 
                 <div class="small-title">
@@ -367,34 +362,24 @@
                 <div class="hold-caption">
                     Press and hold to continue
                 </div>
-
             </div>
 
             <div class="info">
-
                 <div class="info-icon">i</div>
 
                 <div class="info-text">
                     Age confirmation helps keep this
                     experience safe.
                 </div>
-
             </div>
-
         </div>
 
         <div class="footer">
-
             © 2026 ·
-
             <a href="#">Terms of Service</a>
-
             ·
-
             <a href="#">Privacy Policy</a>
-
             ·
-
             <button
                 type="button"
                 class="dmca-button"
@@ -402,18 +387,14 @@
             >
                 DMCA
             </button>
-
         </div>
-
     </div>
 
 
     <!-- STEP 2 -->
 
     <div id="step2" class="step-two">
-
         <div class="step-two-card">
-
             <div class="step-two-message">
                 Continue to proceed.
             </div>
@@ -424,21 +405,14 @@
             >
                 Continue
             </a>
-
         </div>
 
         <div class="step-two-footer">
-
             © 2026 ·
-
             <a href="#">Terms of Service</a>
-
             ·
-
             <a href="#">Privacy Policy</a>
-
             ·
-
             <button
                 type="button"
                 class="dmca-button"
@@ -446,16 +420,13 @@
             >
                 DMCA
             </button>
-
         </div>
-
     </div>
 
 
     <!-- DMCA PANEL -->
 
     <div id="dmcaPanel" class="dmca-panel">
-
         <h2>DMCA Notice &amp; Takedown</h2>
 
         <p>
@@ -499,14 +470,11 @@
         >
             Close
         </button>
-
     </div>
 
 
     <script>
-
         function showStep() {
-
             const params = new URLSearchParams(
                 window.location.search
             );
@@ -517,21 +485,15 @@
             const step2 = document.getElementById("step2");
 
             if (step === "2") {
-
                 step1.style.display = "none";
                 step2.style.display = "flex";
-
             } else {
-
                 step1.style.display = "flex";
                 step2.style.display = "none";
-
             }
         }
 
-
         function openDMCA() {
-
             const panel = document.getElementById("dmcaPanel");
 
             panel.style.display = "block";
@@ -542,11 +504,8 @@
             });
         }
 
-
         function closeDMCA() {
-
             const panel = document.getElementById("dmcaPanel");
-
             panel.style.display = "none";
         }
 
@@ -557,66 +516,54 @@
 
         let holdTimer = null;
         let activated = false;
+        let activePointer = null;
 
-        function startHold(event) {
-
+        function cancelHold(event) {
             if (
-                event.type === "mousedown" &&
-                event.button !== 0
+                activePointer !== null &&
+                event.pointerId !== activePointer
             ) {
                 return;
             }
 
-            if (holdTimer !== null || activated) {
-                return;
-            }
-
-            holdTimer = setTimeout(function () {
-
-                activated = true;
-                holdTimer = null;
-
-                window.location.href = "?step=2";
-
-            }, 1000);
-        }
-
-
-        function cancelHold() {
-
             if (holdTimer !== null) {
-
                 clearTimeout(holdTimer);
                 holdTimer = null;
-
             }
+
+            activePointer = null;
         }
-
-
-        holdLink.addEventListener(
-            "touchstart",
-            startHold,
-            { passive: true }
-        );
-
-        holdLink.addEventListener("touchend", cancelHold);
-        holdLink.addEventListener("touchcancel", cancelHold);
-
-        holdLink.addEventListener("mousedown", startHold);
-        holdLink.addEventListener("mouseup", cancelHold);
-        holdLink.addEventListener("mouseleave", cancelHold);
-
-        holdLink.addEventListener("contextmenu", function (event) {
-            event.preventDefault();
-        });
 
         holdLink.addEventListener("click", function (event) {
             event.preventDefault();
         });
 
+        holdLink.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
+
+        holdLink.addEventListener("pointerdown", function (event) {
+            if (activated || holdTimer !== null) return;
+
+            if (event.pointerType === "mouse" && event.button !== 0) {
+                return;
+            }
+
+            activePointer = event.pointerId;
+
+            holdTimer = setTimeout(function () {
+                activated = true;
+                holdTimer = null;
+
+                window.location.href = "?step=2";
+            }, 1000);
+        });
+
+        holdLink.addEventListener("pointerup", cancelHold);
+        holdLink.addEventListener("pointercancel", cancelHold);
+        holdLink.addEventListener("pointerleave", cancelHold);
 
         showStep();
-
     </script>
 
 </body>
