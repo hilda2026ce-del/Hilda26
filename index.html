@@ -242,79 +242,6 @@
             text-decoration: underline;
         }
 
-        /* DMCA */
-
-        .dmca-panel {
-            display: none;
-            width: calc(100% - 36px);
-            max-width: 700px;
-            margin: 22px auto 0;
-            padding: 22px;
-            background: #fff;
-            border-radius: 14px;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
-            text-align: left;
-        }
-
-        .dmca-panel h2 {
-            margin: 0 0 14px;
-            font-size: 20px;
-        }
-
-        .dmca-panel p {
-            margin: 10px 0;
-            font-size: 14px;
-            line-height: 1.55;
-            color: #555;
-        }
-
-        .dmca-panel ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        .dmca-panel li {
-            margin-bottom: 7px;
-            font-size: 14px;
-            line-height: 1.45;
-            color: #555;
-        }
-
-        .dmca-panel a {
-            color: #333;
-            font-weight: 600;
-            text-decoration: underline;
-        }
-
-        .dmca-button {
-            display: inline-block;
-            margin-top: 4px;
-            padding: 0;
-            border: 0;
-            background: none;
-            color: #777;
-            font-family: inherit;
-            font-size: 12px;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        .dmca-button:hover {
-            color: #222;
-        }
-
-        .dmca-close {
-            display: block;
-            margin: 18px auto 0;
-            padding: 8px 14px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #fff;
-            color: #555;
-            font-family: inherit;
-            cursor: pointer;
-        }
-
         @media (max-width: 480px) {
             .page-container {
                 padding: 18px 14px;
@@ -399,14 +326,6 @@
             <a href="#">Terms of Service</a>
             ·
             <a href="#">Privacy Policy</a>
-            ·
-            <button
-                type="button"
-                class="dmca-button"
-                onclick="
-            >
-                
-            </button>
         </div>
     </div>
 
@@ -440,63 +359,7 @@
             <a href="#">Terms of Service</a>
             ·
             <a href="#">Privacy Policy</a>
-            ·
-            <button
-                type="button"
-                class="dmca-button"
-                onclick
-            >
-                
-            </button>
         </div>
-    </div>
-
-    <!-- DMCA PANEL -->
-
-    <div id="dmcaPanel" class="dmca-panel">
-        <h2>DMCA Notice &amp; Takedown</h2>
-
-        <p>
-            If you believe that copyrighted material has been used
-            without authorization, please submit a copyright complaint to:
-        </p>
-
-        <p>
-            <a href="mailto:girlslive.dmca@proton.me">
-                girlslive.dmca@proton.me
-            </a>
-        </p>
-
-        <p>Please include:</p>
-
-        <ul>
-            <li>Identification of the copyrighted work.</li>
-            <li>The URL where the material appears.</li>
-            <li>Your name and contact information.</li>
-            <li>
-                A statement that you have a good-faith belief
-                that the use is not authorized.
-            </li>
-            <li>
-                A statement that the information provided is accurate
-                and that you are authorized to act on behalf of the
-                copyright owner.
-            </li>
-            <li>Your electronic or physical signature.</li>
-        </ul>
-
-        <p>
-            Valid copyright complaints will be reviewed and handled
-            in accordance with applicable law.
-        </p>
-
-        <button
-            type="button"
-            class="dmca-close"
-            onclick="closeDMCA()"
-        >
-            Close
-        </button>
     </div>
 
     <script>
@@ -519,25 +382,9 @@
             }
         }
 
-        function openDMCA() {
-            const panel = document.getElementById("dmcaPanel");
-
-            panel.style.display = "block";
-
-            panel.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
-
-        function closeDMCA() {
-            document.getElementById("dmcaPanel").style.display = "none";
-        }
-
         /*
-         * Prevent ordinary clicks from navigating to Step 2.
-         * Leave the link native so Safari can offer its own
-         * long-press context menu where supported.
+         * Prevent an ordinary click from navigating to Step 2.
+         * Keep the link available for Safari's native long-press menu.
          */
         const holdLink = document.getElementById("holdLink");
 
