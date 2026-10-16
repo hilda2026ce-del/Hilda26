@@ -82,10 +82,10 @@
             text-decoration: none;
             color: inherit;
             margin-top: 14px;
-            -webkit-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none;
-            touch-action: none;
+            -webkit-user-select: auto;
+            user-select: auto;
+            -webkit-touch-callout: default;
+            touch-action: auto;
         }
 
         .hold-inner {
@@ -390,7 +390,6 @@
         </div>
     </div>
 
-
     <!-- STEP 2 -->
 
     <div id="step2" class="step-two">
@@ -422,7 +421,6 @@
             </button>
         </div>
     </div>
-
 
     <!-- DMCA PANEL -->
 
@@ -472,7 +470,6 @@
         </button>
     </div>
 
-
     <script>
         function showStep() {
             const params = new URLSearchParams(
@@ -509,59 +506,12 @@
             panel.style.display = "none";
         }
 
-
-        /* PRESS AND HOLD FOR 1 SECOND */
-
-        const holdLink = document.getElementById("holdLink");
-
-        let holdTimer = null;
-        let activated = false;
-        let activePointer = null;
-
-        function cancelHold(event) {
-            if (
-                activePointer !== null &&
-                event.pointerId !== activePointer
-            ) {
-                return;
-            }
-
-            if (holdTimer !== null) {
-                clearTimeout(holdTimer);
-                holdTimer = null;
-            }
-
-            activePointer = null;
-        }
-
-        holdLink.addEventListener("click", function (event) {
-            event.preventDefault();
-        });
-
-        holdLink.addEventListener("contextmenu", function (event) {
-            event.preventDefault();
-        });
-
-        holdLink.addEventListener("pointerdown", function (event) {
-            if (activated || holdTimer !== null) return;
-
-            if (event.pointerType === "mouse" && event.button !== 0) {
-                return;
-            }
-
-            activePointer = event.pointerId;
-
-            holdTimer = setTimeout(function () {
-                activated = true;
-                holdTimer = null;
-
-                window.location.href = "?step=2";
-            }, 1000);
-        });
-
-        holdLink.addEventListener("pointerup", cancelHold);
-        holdLink.addEventListener("pointercancel", cancelHold);
-        holdLink.addEventListener("pointerleave", cancelHold);
+        /*
+         * The hold link is intentionally left as a normal link.
+         * Safari controls its native long-press menu.
+         * A webpage cannot force Safari to show a specific menu
+         * or guarantee an "Open in Browser" option.
+         */
 
         showStep();
     </script>
